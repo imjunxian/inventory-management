@@ -47,6 +47,11 @@ include('../../includes/navbar.php');
       <div class="row">
         <!-- left column -->
         <div class="col-md-12">
+          <div class="alert alert-info alert-dismissible" >
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <i class="fa fa-exclamation-triangle"></i> Notes: The maximum image attached file size is 5MB.
+                  The only accepted format are png, jpg and jpeg.
+              </div>
           <!-- general form elements -->
           <div class="card card-default">
             <div class="card-header">
@@ -70,11 +75,9 @@ include('../../includes/navbar.php');
                     <?php
                             if (isset($_SESSION['statusEmail']) && $_SESSION['statusEmail'] != '') {
                               echo '
-                                    <div class="form-group">
                                     <div class="alert alert-danger alert-dismissible" >
                                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                       <i class="fa fa-exclamation-circle"></i>  ' . $_SESSION['statusEmail'] . '
-                                    </div>
                                     </div>
                                     ';
                               unset($_SESSION['statusEmail']);
@@ -90,7 +93,7 @@ include('../../includes/navbar.php');
                                   <img class="img-profile rounded-circle" src="../../dist/img/avatar9.png" height="112px;" width="112px;">
                                   <?php
                                 }else{
-                                  echo '<img src="../../dist/img/profile/'.$row['profileImg'].'" width="112" height="112" class="img-circle" alt="image" />';
+                                  echo '<a href="../../dist/img/profile/'.$row['profileImg'].'"><img src="../../dist/img/profile/'.$row['profileImg'].'" width="112" height="112" class="img-circle" alt="image" /></a>';
                                 }
                               ?>
                             </div>

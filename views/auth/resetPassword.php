@@ -108,7 +108,6 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if(!mysqli_num_rows($result) >= 1){
-  //header("Location: ../error/404.php");
   ?>
   <script> location.replace("../error/404.php"); </script>
   <?php
@@ -144,11 +143,9 @@ while ($row = $result->fetch_assoc()) {
               <?php
                 if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
                   echo '
-                        <div class="form-group"  style="max-width: 400px;" id="success-alert">
-                        <div class="alert alert-danger alert-dismissible" >
+                        <div class="alert alert-danger alert-dismissible" style="max-width: 400px;" id="success-alert">
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <i class="fa fa-exclamation-circle"></i> ' . $_SESSION['status'] . '
-                        </div>
                         </div>
                         ';
                   unset($_SESSION['status']);

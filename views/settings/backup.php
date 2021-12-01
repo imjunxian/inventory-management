@@ -55,11 +55,9 @@ include('../../includes/navbar.php');
                <?php
                 if (isset($_SESSION['statusE']) && $_SESSION['statusE'] != '') {
                   echo '
-                        <div class="form-group" id="success-alert">
-                        <div class="alert alert-danger alert-dismissible" >
+                        <div class="alert alert-danger alert-dismissible" id="success-alert">
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <i class="fa fa-exclamation-circle"></i> ' . $_SESSION['statusE'] . '
-                        </div>
                         </div>
                         ';
                   unset($_SESSION['statusE']);
@@ -69,11 +67,9 @@ include('../../includes/navbar.php');
             <?php
                 if (isset($_SESSION['successState']) && $_SESSION['successState'] != '') {
                   echo '
-                        <div class="form-group" id="success-alert">
-                        <div class="alert alert-success alert-dismissible ">
+                        <div class="alert alert-success alert-dismissible" id="success-alert">
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <i class="fa fa-check-circle"></i> ' . $_SESSION['successState'] . '
-                        </div>
                         </div>
                         ';
                   unset($_SESSION['successState']);

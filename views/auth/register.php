@@ -1,9 +1,12 @@
 <?php
 session_start();
-$title = "Forget Password";
+$title = "Register";
+include('../../database/dbconfig.php');
 include('../../includes/header.php');
 //include('../includes/navbar.php');
+
 ?>
+
 
 <style type="text/css">
   body {
@@ -15,13 +18,14 @@ include('../../includes/header.php');
   margin-bottom: 19px; }
   .brand-wrapper .logo {
     height: 37px; }
+
 .input-group-text{
   background-color: transparent;
 }
 
 .login-card {
   border: 0;
-  border-radius: 10px;
+  border-radius: .35rem;
   box-shadow: 0 10px 35px 0 rgba(172, 168, 168, 0.43);
   overflow: hidden; }
   .login-card-img {
@@ -35,7 +39,7 @@ include('../../includes/header.php');
     padding: 85px 60px 60px; }
     @media (max-width: 422px) {
       .login-card .card-body {
-        padding: 35px 24px; } }
+        padding: 30px 24px; } }
   .login-card-description {
     font-size: 23px;
     color: #000;
@@ -93,8 +97,20 @@ include('../../includes/header.php');
 
 </style>
 
+  <?php
+  $query = "SELECT * FROM users WHERE status='Active' and userRoles ='SuperUser' ORDER BY userId";
+  $query_run = mysqli_query($connection, $query);
+  $row = mysqli_num_rows($query_run);
 
-<body>
+ if($row > 0 && ($_SESSION['user_role'] != "SuperUser" || $_SESSION['user_role'] == "")){
+    ?>
+       <script type="text/javascript">
+         location.replace("../error/404.php"); 
+       </script>
+    <?php
+ }else{
+    ?>
+<body id="body">
   <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
     <div class="container">
       <div class="card login-card">
@@ -108,56 +124,70 @@ include('../../includes/header.php');
                 <br>
                  <p class="h2 "><img src="../../dist/img/tabLogo.png" alt="logo" class="img-circle logo" style="margin-top:-1%"> INVENTORY</p>
               </div>
-              <p class="login-card-description"> Forget Password</p>
-              <p class="login-card-description" style="font-size:16px;color:#666666;">Enter your Email to reset the Password :)</p>
-               <?php
-                if (isset($_SESSION['sendStatus']) && $_SESSION['sendStatus'] != '') {
+              <p class="login-card-description ">Register Here :)</p>
+
+              <?php
+                if (isset($_SESSION['statusReg']) && $_SESSION['statusReg'] != '') {
                   echo '
+
                         <div class="alert alert-danger alert-dismissible" style="max-width: 400px;" id="success-alert">
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <i class="fa fa-exclamation-circle"></i> ' . $_SESSION['sendStatus'] . '
+                            <i class="fa fa-exclamation-circle"></i> ' . $_SESSION['statusReg'] . '
                         </div>
-                        ';
-                  unset($_SESSION['sendStatus']);
-                }
-            ?>
-
-            <?php
-                if (isset($_SESSION['sendsuccessStatus']) && $_SESSION['sendsuccessStatus'] != '') {
-                  echo '
-                        <div class="form-group"  style="max-width: 400px;" id="success-alert">
-                        <div class="alert alert-success alert-dismissible " >
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <i class="fa fa-check-circle"></i> ' . $_SESSION['sendsuccessStatus'] . '
-                        </div>
-                        </div>
-                        ';
-                  unset($_SESSION['sendsuccessStatus']);
-                }
-            ?>
-
-             <form action="code.php" method="post" id="loginForm">
-
-                  <div class="input-group mb-4 ">
- 
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Email">
-                    <div class="input-group-append">
-                      <div class="input-group-text">
-                        <span class="fas fa-envelope"></span>
-                      </div>
-                    </div>              
-                </div>
    
+                        ';
+                  unset($_SESSION['statusReg']);
+                }
+            ?>
 
+             <form action="code.php" method="post" id="registerForm">
+
+                <div class="input-group mb-4 ">
+                  <input type="text" name="username" class="form-control" id="username" placeholder="Username" value="">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-user"></span>
+                    </div>
+                  </div>              
+                </div>
+
+                <div class="input-group mb-4 ">
+                  <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-envelope"></span>
+                    </div>
+                  </div>              
+                </div>
+
+                <div class="input-group mb-4 ">
+                  <input type="password" class="form-control" placeholder="Password" name="password" id="password" value="">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-eye field-icon toggle-password" toggle="#password-field" style="font-size:14px;"></span>
+                    </div>
+                  </div>
+                </div>
+
+                 <div class="input-group mb-4 ">
+                  <input type="password" class="form-control" placeholder="Confirm Password" name="cpass" id="cpass" value="">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-eye field-icon toggle-cpassword" toggle="#password-field" style="font-size:14px;"></span>
+                    </div>
+                  </div>
+                </div>
+
+                 
+                  
                   <div class="row">
                   <!-- /.col -->
-                  <div class="col-12">
-                    <button type="submit" name="sendBtn" class="btn btn-primary btn-block" id="login">Send</button>
+                  <div class="col-12 mt-3 mb-3">
+                    <button type="submit" name="registerBtn" class="btn btn-primary btn-block" id="login">Register</button>
                   </div>
                   <!-- /.col -->
                   </div>
                 <br>
-                <p class="login-card-footer-text "><a href="../auth/"><i class="fa fa-unlock"></i> Remember Password?</a></p>
 
                 </form>
                 
@@ -175,6 +205,9 @@ include('../../includes/header.php');
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 
+            <?php
+  }
+  ?>
 
 
 
@@ -196,22 +229,47 @@ include('../../includes/script.php');
           "Please check your input."
         );
 
-        $('#loginForm').validate({
+        $('#registerForm').validate({
           rules: {
+             username: {
+              required: true,
+              minlength: 5
+            },
             email: {
               required: true,
               email: true,
               regex: /^\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
             },
-
+            password: {
+              required: true,
+              regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/
+              //minlength: 5
+            },
+            cpass: {
+              required: true,
+              regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+              equalTo: "#password",
+            },
           },
           messages: {
+            username: {
+              required: "Please enter username",
+              minlength: "Your username must be at least 5 characters"
+            },
             email: {
               required: "Please enter your email",
               email: "Please enter a vaild email",
               regex: "Please enter a valid email"
             },
-
+            password: {
+              required: "Please enter your password",
+              regex: "Your password must at least 8 characters which is contained 1 number, 1 uppercase, 1 lowercase letter"
+            },
+            cpass: {
+              required: "Please confirm your password",
+              regex: "Your password must at least 8 characters which is contained 1 number, 1 uppercase, 1 lowercase letter",
+              equalTo: "Confirm Password must be same with password"
+            },
           },
           errorElement: 'span',
           errorPlacement: function(error, element) {
@@ -243,5 +301,29 @@ include('../../includes/script.php');
         }
       });
 
+      $(".toggle-cpassword").on("click", function() {
+      $(this).toggleClass("fa-eye fa-eye-slash");
+        var cp = $("#cpass");
+        if (cp.attr("type") == "password") {
+          cp.attr("type", "text");
+        } else {
+          cp.attr("type", "password");
+        }
+    });
+
     </script>
 
+    <style type="text/css">
+        .icheck-primary[class*=icheck-]>input:first-child+input[type=hidden]+label::before, [class*=icheck-]>input:first-child+label::before {
+          content: "";
+          display: inline-block;
+          position: absolute;
+          width: 22px;
+          height: 22px;
+          border: 1px solid #D3CFC8;
+          border-radius: 15%;
+          margin-left: -29px;
+        }
+    </style>
+
+    

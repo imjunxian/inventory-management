@@ -31,7 +31,7 @@ if ($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin" |
 </style>
 
 <script type="text/javascript">
-  function onReady(callback) {
+/*function onReady(callback) {
   var intervalId = window.setInterval(function() {
     if (document.getElementsByTagName('body')[0] !== undefined) {
       window.clearInterval(intervalId);
@@ -47,5 +47,21 @@ function setVisible(selector, visible) {
 onReady(function() {
   setVisible('body', true);
   setVisible('.loader', false);
-});
+});*/
+
+//loader while loading
+document.onreadystatechange = function () {
+    if (document.readyState !== "complete") {
+        document.querySelector(
+            "body").style.visibility = "hidden";
+        document.querySelector(
+            ".loader").style.visibility = "visible";
+    } else {
+        document.querySelector(
+            ".loader").style.display = "none";
+        document.querySelector(
+            "body").style.visibility = "visible";
+    }
+};
+
 </script>

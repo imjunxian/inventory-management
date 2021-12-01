@@ -130,6 +130,7 @@ include('../../includes/navbar.php');
                   <table id="dataTable" class="table table-bordered table-striped">
                     <thead>
                       <tr>
+                        <th width="20">No</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Contact</th>
@@ -147,16 +148,20 @@ include('../../includes/navbar.php');
                                 <th></th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
                           </tfoot>
 
                     <tbody>
                       <?php
                       if ($result > '0') {
+                        $n=0;
                         while ($row = $result->fetch_assoc()) {
+                        $n++;
                       ?>
                           <tr>
                             <form></form>
+                            <td><?php echo $n; ?></td>
                             <td><?php echo $row['customerName']; ?></td>
                             <td><?php echo $row['customerEmail']; ?></td>
                             <td><?php echo $row['customerContact']; ?></td>

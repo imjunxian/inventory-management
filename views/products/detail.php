@@ -64,7 +64,7 @@ include('../../includes/navbar.php');
                                       <img class="rounded-circle" src="../../dist/img/prodDefault.png" height="130px;" width="130px;" alt="image">
                                     <?php
                                   }else{
-                                    echo '<img src="../../dist/img/productImage/'.$row['productImage'].'" width="130" height="130" class="img-circle" alt="image" />';
+                                    echo '<a href="../../dist/img/productImage/'.$row['productImage'].'"><img src="../../dist/img/productImage/'.$row['productImage'].'" width="130" height="130" class="img-circle" alt="image" /></a>';
                                   }
                                               
                               ?>

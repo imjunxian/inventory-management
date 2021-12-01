@@ -99,7 +99,8 @@ include('../../includes/navbar.php');
                                         $end = date_create($_POST["eDate"]);
                                         $endD = date_format($end, "d M Y");
 
-                                        $query_sum = "SELECT sum(sales), sum(profit) FROM orders WHERE orderStatus='Completed' AND orderDate BETWEEN '$startD' AND '$endD' ORDER BY orderDateTime DESC";
+                                        //$query_sum = "SELECT sum(sales), sum(profit) FROM orders WHERE orderStatus='Completed' AND orderDate BETWEEN '$startD' AND '$endD' ORDER BY orderDateTime DESC";
+                                        $query_sum = "SELECT sum(sales), sum(profit) FROM orders WHERE orderStatus='Completed' AND orderDate >= '$startD' AND orderDate <= '$endD' ORDER BY orderDateTime DESC";
                                         $query_sum_run = mysqli_query($connection, $query_sum); 
 
                                         if(mysqli_num_rows($query_sum_run) > 0){
@@ -107,12 +108,7 @@ include('../../includes/navbar.php');
                                                 ?>
                                                 
                                                 <tr>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th width="120px"></th>
+                                                    <th colspan="6" style="text-align:right;">Total : </th>
                                                     <th>RM <?php echo number_format($row_sum['sum(sales)'],2); ?></th>
                                                     <th>RM <?php echo number_format($row_sum['sum(profit)'],2); ?></th>
                                                 </tr>
@@ -131,7 +127,8 @@ include('../../includes/navbar.php');
                                         $end = date_create($_POST["eDate"]);
                                         $endD = date_format($end, "d M Y");
 
-                                        $query_rep = "SELECT * FROM orders WHERE orderDate BETWEEN '$startD' AND '$endD' ORDER BY orderId DESC";
+                                        //$query_rep = "SELECT * FROM orders WHERE orderDate BETWEEN '$startD' AND '$endD' ORDER BY orderId DESC";
+                                        $query_rep = "SELECT * FROM orders WHERE orderDate >= '$startD' AND orderDate <= '$endD' ORDER BY orderId DESC";
                                         $query_rep_run = mysqli_query($connection, $query_rep);
 
                                         if(mysqli_num_rows($query_rep_run) > 0){
@@ -253,13 +250,14 @@ $(function() {
       "dom":"l<'row'<'col-sm-3'B><'col-sm-9'f>>" +
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-         "language": {
-              "emptyTable": "No data available in table"
-            },
+       "oLanguage": {
+          "sLengthMenu": "Show _MENU_ records",
+      },
       "aLengthMenu": [[10, 15, 20, 50, 100, -1], [10, 15, 20, 50, 100, 'All']],
       "responsive": true,
       "lengthChange": true,
       "autoWidth": false,
+      "paginationType": 'full_numbers',
       buttons: [
             /*{
                 extend: 'pageLength',
@@ -322,7 +320,9 @@ $(function() {
               className: 'btn-default',
             },
       ],
-
+      infoCallback: function( settings, start, end, max, total, pre ) {
+        return "Showing " + start +" to "+ end + " of " + total +" records ";
+      }
 
     }).buttons().container().appendTo('#dataTable_wrapper .col-md-6:eq(0)');
 

@@ -47,6 +47,13 @@ include('../../includes/navbar.php');
         <!-- left column -->
         <div class="col-md-12">
           <!-- general form elements -->
+
+          <div class="alert alert-info alert-dismissible" >
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <i class="fa fa-exclamation-triangle"></i> Notes: The maximum image attached file size is 5MB.
+                  The only accepted format are png, jpg and jpeg.
+              </div>
+
           <div class="card card-default">
             <div class="card-header">
               <h3 class="card-title">Edit Product</h3>
@@ -69,11 +76,9 @@ include('../../includes/navbar.php');
                     <?php
                             if (isset($_SESSION['statusSKU']) && $_SESSION['statusSKU'] != '') {
                               echo '
-                                    <div class="form-group">
                                     <div class="alert alert-danger alert-dismissible" >
                                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                         <i class="fa fa-exclamation-circle"></i> ' . $_SESSION['statusSKU'] . '
-                                    </div>
                                     </div>
                                     ';
                               unset($_SESSION['statusSKU']);
@@ -89,7 +94,7 @@ include('../../includes/navbar.php');
                                       <img class="rounded-circle" src="../../dist/img/prodDefault.png" height="130px;" width="130px;" alt="image">
                                     <?php
                                   }else{
-                                    echo '<img src="../../dist/img/productImage/'.$row['productImage'].'" width="130" height="130" class="img-circle" alt="image" />';
+                                    echo '<a href="../../dist/img/productImage/'.$row['productImage'].'"><img src="../../dist/img/productImage/'.$row['productImage'].'" width="130" height="130" class="img-circle" alt="image" /></a>';
                                   }
                                               
                               ?>

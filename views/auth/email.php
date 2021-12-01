@@ -177,7 +177,7 @@
                     <tr>
                         <td bgcolor="#FFECD1" align="center" style="padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
                             <!--<p style="margin: 0;text-align: center;">Copyright &copy; 2022. All rights reserved.</p>-->
-                            <p style="margin: 0;text-align: center;">Copyright &copy; INV 2021. All rights reserved.</p>
+                            <p style="margin: 0;text-align: center;"></p>
                         </td>
                     </tr>
                 </table>

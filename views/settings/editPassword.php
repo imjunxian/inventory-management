@@ -58,11 +58,9 @@ include('../../includes/navbar.php');
                            <?php
                             if (isset($_SESSION['statusPassword']) && $_SESSION['statusPassword'] != '') {
                               echo '
-                                    <div class="form-group">
                                     <div class="alert alert-danger alert-dismissible" >
                                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                        <i class="fa fa-exclamation-circle"></i> ' . $_SESSION['statusPassword'] . '
-                                    </div>
                                     </div>
                                     ';
                               unset($_SESSION['statusPassword']);
@@ -72,11 +70,9 @@ include('../../includes/navbar.php');
                           <?php
                             if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
                               echo '
-                                    <div class="form-group">
                                     <div class="alert alert-success alert-dismissible" >
                                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                         ' . $_SESSION['status'] . '
-                                    </div>
                                     </div>
                                     ';
                               unset($_SESSION['status']);
@@ -104,10 +100,10 @@ include('../../includes/navbar.php');
                         </div>
                         <!-- /.card-body -->
 
-                        <div class="card-footer">
-                                <a href="../settings/" class="btn btn-secondary">Cancel</a>
-                                <!--<button type="submit" class="btn btn-secondary">Cancel</button>-->
-                              <button type="submit" name="editpass_btn" class="btn btn-primary" >Update</button>
+                        <div class="card-footer">   
+                              <a href="../settings/" class="btn btn-secondary">Cancel</a>
+                              <button type="submit" name="editpass_btn" class="btn btn-primary">Update</button>
+                              <input type="reset" name="resetBtn" class="btn btn-dark float-right">
                         </div>
                       </form>
                     <?php

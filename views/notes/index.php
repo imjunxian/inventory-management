@@ -269,23 +269,19 @@ include('../../includes/navbar.php');
     <?php
         if (isset($_SESSION['statusEmail']) && $_SESSION['statusEmail'] != '') {
             echo '
-                <div class="form-group" id="success-alert">
-                    <div class="alert alert-danger alert-dismissible" >
+                    <div class="alert alert-danger alert-dismissible" id="success-alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <i class="fa fa-exclamation-circle"></i>  ' . $_SESSION['statusEmail'] . '
                     </div>
-                </div>
                 ';
             unset($_SESSION['statusEmail']);
         }
         if (isset($_SESSION['statusSuccess']) && $_SESSION['statusSuccess'] != '') {
             echo '
-                <div class="form-group" id="success-alert">
-                    <div class="alert alert-success alert-dismissible" >
+                    <div class="alert alert-success alert-dismissible" id="success-alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <i class="fa fa-check-circle"></i>  ' . $_SESSION['statusSuccess'] . '
                     </div>
-                </div>
                 ';
             unset($_SESSION['statusSuccess']);
         }
@@ -316,7 +312,7 @@ include('../../includes/navbar.php');
 
             <?php
                 $id = $_SESSION["user_id"];
-                $query = $connection -> prepare("SELECT * FROM notes WHERE userId=? ORDER BY date DESC");
+                $query = $connection -> prepare("SELECT * FROM notes WHERE userId=? ORDER BY Id DESC");
                 $query -> bind_param("i", $id);
                 $query->execute(); 
                 $result = $query->get_result();
@@ -353,9 +349,7 @@ include('../../includes/navbar.php');
             <div class="col-12 d-flex justify-content-center">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        <li class="page-item"><a class="page-link previous-page" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link next-page" href="#">Next</a></li>
+  
                     </ul>
                 </nav>
             </div>
@@ -579,7 +573,7 @@ $(function() {
       }
 
       $(".pagination").append(
-        $("<li>").addClass("page-item").addClass("previous-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Prev")),
+        $("<li>").addClass("page-item").addClass("previous-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Previous")),
         $("<li>").addClass("page-item").addClass("next-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Next"))
       );
 

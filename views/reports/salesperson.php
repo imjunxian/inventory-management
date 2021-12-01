@@ -72,12 +72,7 @@ include('../../includes/navbar.php');
                                                 ?>
                                                 
                                                 <tr>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th width="120px"></th>
+                                                    <th colspan="6" style="text-align:right;">Total : </th>
                                                     <th>RM <?php echo number_format($row_sum['sum(sales)'],2); ?></th>
                                                     <th>RM <?php echo number_format($row_sum['sum(profit)'],2); ?></th>
                                                 </tr>
@@ -189,10 +184,10 @@ include('../../includes/navbar.php');
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-6 col-md-12 col-sm-12">
-                                <form action="salesperson.php" method="POST">
+                                <form action="salesperson.php" method="POST" id="salespersonForm">
                                     <div class="input-group">
-                                        <select type="select" name="salesperson" class="form-control multiselect" >
-                                            <option value="" disabled selected>--- Select Sales Person ---</option>
+                                        <select type="select" name="salesperson" class="form-control multiselect" id="salesperson">
+                                            <option value="" disbaled selected>--- Select Sales Person ---</option>
                                              <?php
                                                  $records = mysqli_query($connection, "SELECT * FROM users");
                                                     while($data = mysqli_fetch_array($records)){
@@ -226,8 +221,12 @@ include('../../includes/navbar.php');
                           </thead>
                             <tfoot>
                                 <?php 
-                                    if(isset($_POST['submit_Btn'])){
-                                        $uid = $_POST["salesperson"];
+                                    if(isset($_POST['submit_Btn'])){                                       
+                                        if($_POST['salesperson'] != "" && $_POST['salesperson'] != null){       
+                                            $uid = $_POST['salesperson'];
+                                        }else{
+                                            $uid = $_SESSION["user_id"];
+                                        } 
                                     }else{
                                         $uid = $_SESSION["user_id"];
                                     }
@@ -239,12 +238,7 @@ include('../../includes/navbar.php');
                                                 ?>
                                                 
                                                 <tr>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th width="120px"></th>
+                                                    <th colspan="6" style="text-align:right;">Total : </th>
                                                     <th>RM <?php echo number_format($row_sum['sum(sales)'],2); ?></th>
                                                     <th>RM <?php echo number_format($row_sum['sum(profit)'],2); ?></th>
                                                 </tr>
@@ -257,7 +251,11 @@ include('../../includes/navbar.php');
                           <tbody>
                             <?php
                             if(isset($_POST['submit_Btn'])){
-                                $uid = $_POST['salesperson'];
+                                if($_POST['salesperson'] != "" && $_POST['salesperson'] != null){       
+                                    $uid = $_POST['salesperson'];
+                                }else{
+                                    $uid = $_SESSION["user_id"];
+                                }   
                             }else{
                                 $uid = $_SESSION["user_id"];
                             }
@@ -402,7 +400,7 @@ include('../../includes/navbar.php');
                                   $row_ttp = mysqli_fetch_assoc($query_ttp_run);
                                   ?>
                                   <h6>
-                                    Total Sales: <span class="text-dark"><b>RM <?php echo number_format($row_ttp["sum(profit)"],2); ?></b></span>
+                                    Total Profits: <span class="text-dark"><b>RM <?php echo number_format($row_ttp["sum(profit)"],2); ?></b></span>
 
                                   </h6>
                                   <?php
@@ -443,6 +441,35 @@ if (window.history.replaceState) {
     });
   });
 
+   $(function() {
+
+    $('#salespersonForm').validate({
+      rules: {
+        salesperson: {
+          required: true,
+        },
+
+      },
+      messages: {
+        salesperson: {
+          required: "Salesperson is required.",
+        },
+       
+      },
+      errorElement: 'span',
+      errorPlacement: function(error, element) {
+        error.addClass('invalid-feedback');
+        element.closest('.input-group').append(error);
+      },
+      highlight: function(element, errorClass, validClass) {
+        $(element).addClass('is-invalid');
+      },
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).removeClass('is-invalid');
+      },
+    });
+  });
+
 </script>
 
 <script type="text/javascript">
@@ -451,13 +478,14 @@ if (window.history.replaceState) {
       "dom":"l<'row'<'col-sm-3'B><'col-sm-9'f>>" +
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-         "language": {
-              "emptyTable": "No data available in table"
-            },
+        "oLanguage": {
+          "sLengthMenu": "Show _MENU_ records",
+      },
       "aLengthMenu": [[10, 15, 20, 50, 100, -1], [10, 15, 20, 50, 100, 'All']],
       "responsive": true,
       "lengthChange": true,
       "autoWidth": false,
+      "paginationType": 'full_numbers',
       buttons: [
             /*{
                 extend: 'pageLength',
@@ -520,7 +548,9 @@ if (window.history.replaceState) {
               className: 'btn-default',
             },
       ],
-
+      infoCallback: function( settings, start, end, max, total, pre ) {
+        return "Showing " + start +" to "+ end + " of " + total +" records ";
+      }
     }).buttons().container().appendTo('#dataTable_wrapper .col-md-6:eq(0)');
 
 </script>

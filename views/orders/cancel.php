@@ -12,12 +12,12 @@ include('../../includes/navbar.php');
         <div class="container-fluid">
             <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Orders</h1>
+                <h1 class="m-0">Cancelled Orders</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="../dashboard/">Home</a></li>
-                <li class="breadcrumb-item active">Orders</li>
+                <li class="breadcrumb-item active">Cancelled Orders</li>
                 </ol>
             </div><!-- /.col -->
             </div><!-- /.row -->
@@ -28,57 +28,22 @@ include('../../includes/navbar.php');
          <section class="content">
              <div class="container-fluid">
 
-              <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                <form action="code.php" method="POST" id="statusForm">
-                                <div class="input-group" style="">
-                                <!--<input type="text" class="form-control" name="datepicker" id="datepicker"  placeholder="Select Year" />-->
-                                <select class="form-control multiselect" id="status" name="status">
-                                  <option value="" selected disabled>--- Select Order Status ---</option>
-                                  <option value="All">All</option>
-                                  <option value="Completed">Completed</option>
-                                  <option value="Pending">Pending</option>
-                                  <option value="Cancelled">Cancelled</option>
-                                </select>
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="submit" name="submit_Btn" style="display: inline-block;">Filter</button>
-                                </span>
-                              </div>
-                            </form>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
             <div class="row">
               <div class="col-12">
 
                 <div class="card">
                   <form action="">
                     <div class="card-header">
-                      <h2 class="card-title">Order Records</h2>
-                      <button type="button" class="btn btn-primary float-right" onclick='window.location.href="add.php"'>
-                         <i class="fa fa-plus"></i> Add
-                      </button>
+                      <h2 class="card-title">Cancelled Order Records</h2>
+                    
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                       <div class="table-responsive">
                         <?php
-                        if(isset($_GET["status"])){
-                          $sta = $_GET["status"];
+                          $sta = "Cancelled";
                           $query = "SELECT orders.*, users.userName FROM orders INNER JOIN users ON users.userId = orders.salesperson WHERE orderStatus='$sta' ORDER BY orderId DESC";
                           $query_run = mysqli_query($connection, $query);
-                        }else{
-                          $query = "SELECT orders.*, users.userName FROM orders INNER JOIN users ON users.userId = orders.salesperson ORDER BY orderId DESC";
-                          $query_run = mysqli_query($connection, $query);
-                        }
-
                         ?>
 
                         <table id="dataTable" class="table table-bordered table-striped">
@@ -156,11 +121,9 @@ include('../../includes/navbar.php');
                                         <form action="code.php" method="post">
                                           <div class="btn">
                                             <a href="../orders/print.php?id=<?php echo $row["orderId"];?>" name="printBtn" class="btn btn-secondary" data-toggle="tooltip" title="Print <?php echo "#$in"; ?>"><i class="fa fa-print" style="font-size:14px;"></i></a>
-                                            <input type="hidden" name="edit_id" value="<?php echo $row['orderId']; ?>">
-                                            <button type="submit" name="editBtn" class="btn btn-primary" data-toggle="tooltip" title="Edit <?php echo "#$in"; ?>"><i class="fa fa-pencil-alt" style="font-size:14px;"></i></button>
-                                            <a href="../orders/detail.php?id=<?php echo $row["orderId"];?>" name="viewBtn" class="btn btn-info" data-toggle="tooltip" title="View <?php echo "#$in"; ?>"><i class="fa fa-eye" style="font-size:14px;"></i></a>                    
-                                            <!--<input type="hidden" name="delete_id" value="<?php echo $row['orderId']; ?>">
-                                            <a href="#deleteModal" class="btn btn-danger deleteBtn" data-id="<?php echo $row['orderId']; ?>" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash" data-toggle="tooltip" title="Delete <?php echo "#$in"; ?>"></i></a>-->                          
+                                            <input type="hidden" name="recover_id" value="<?php echo $row['orderId']; ?>">
+                                            <button type="submit" name="recoverBtn" class="btn btn-primary" data-toggle="tooltip" title="Recover <?php echo "#$in"; ?>"><i class="fa fa-undo" style="font-size:14px;"></i></button>
+                                            <a href="../orders/detail.php?id=<?php echo $row["orderId"];?>" name="viewBtn" class="btn btn-info" data-toggle="tooltip" title="View <?php echo "#$in"; ?>"><i class="fa fa-eye" style="font-size:14px;"></i></a> 
                                           </div>
 
                                         </form>
@@ -177,9 +140,9 @@ include('../../includes/navbar.php');
                     </div>
                     <!-- /.card-body -->
                   </form>
-                   <!--<div class="card-footer">
-                  <a class="btn btn-secondary" href="../orders/cancel.php"><i class="fa fa-ban"></i> Cancelled Orders</a>
-                </div>-->
+                  <div class="card-footer">
+                    <a class="btn btn-secondary" href="../orders/"><i class="fa fa-check-circle"></i> Orders</a>
+                  </div>
                    
                 </div>
                 <!-- /.card -->

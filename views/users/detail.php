@@ -81,7 +81,7 @@ include('../../includes/navbar.php');
                                                       <img class="img-profile rounded-circle" src="../../dist/img/avatar9.png" height="112px;" width="112px;" style="margin-top: -2px;">
                                                       <?php
                                                     }else{
-                                                      echo '<img src="../../dist/img/profile/'.$row['profileImg'].'" width="112" height="112" class="img-circle" alt="image" />';
+                                                      echo '<a href="../../dist/img/profile/'.$row['profileImg'].'"><img src="../../dist/img/profile/'.$row['profileImg'].'" width="112" height="112" class="img-circle" alt="image" /></a>';
                                                     }
                                                   ?>
                                                   

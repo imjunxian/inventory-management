@@ -28,13 +28,13 @@ include('../../includes/navbar.php');
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">Users</h1>
+                <h1 class="m-0">Closed Users</h1>
               </div><!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="../dashboard">Home</a></li>
                   <li class="breadcrumb-item active">Recycle Bins</li>
-                  <li class="breadcrumb-item active">Users</li>
+                  <li class="breadcrumb-item active">Closed Users</li>
                 </ol>
               </div><!-- /.col -->
             </div><!-- /.row -->
@@ -51,7 +51,7 @@ include('../../includes/navbar.php');
                 <div class="card">
                   <form action="">
                     <div class="card-header">
-                      <h2 class="card-title">User Records</h2>
+                      <h2 class="card-title">Closed User Records</h2>
                       <button type="button" class="btn btn-primary float-right" onclick='window.location.href="add.php"'>
                         Add <i class="fa fa-plus"></i>
                       </button>
@@ -69,6 +69,7 @@ include('../../includes/navbar.php');
                         <table id="dataTable" class="table table-bordered table-striped">
                           <thead>
                             <tr>
+                              <th width="20">No</th>
                               <th width="60px">Image</th>
                               <th>Name</th>
                               <th>Email</th>
@@ -88,17 +89,20 @@ include('../../includes/navbar.php');
                                 <th></th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
                           </tfoot>
                          
                           <tbody>
                             <?php
                               if (mysqli_num_rows($query_run)) {
-                                //loop 2 queries in one while loop
+                                $n=0;
                                 while ($row = mysqli_fetch_assoc($query_run)) {
+                                  $n++;
                                 ?>
                                     <tr>
                                       <form></form>
+                                      <td><?php echo $n; ?></td>
                                       <td>
                                         <?php  
                                             if($row["profileImg"] == ""){
@@ -106,7 +110,7 @@ include('../../includes/navbar.php');
                                             <img class="img-profile rounded-circle" src="../../dist/img/avatar9.png" height="60px;" width="60px;">
                                             <?php
                                             }else{
-                                              echo '<img src="../../dist/img/profile/'.$row['profileImg'].'" width="60px" height="60px" class="img-circle" alt="image" />';
+                                              echo '<a href="../../dist/img/profile/'.$row['profileImg'].'"><img src="../../dist/img/profile/'.$row['profileImg'].'" width="60px" height="60px" class="img-circle" alt="image" /></a>';
                                             }
                                               
                                         ?>

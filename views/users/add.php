@@ -46,6 +46,13 @@ include('../../includes/navbar.php');
       <div class="row">
         <!-- left column -->
         <div class="col-md-12">
+
+          <div class="alert alert-info alert-dismissible" >
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <i class="fa fa-exclamation-triangle"></i> Notes: The maximum image attached file size is 5MB.
+                  The only accepted format are png, jpg and jpeg.
+              </div>
+
           <!-- general form elements -->
           <div class="card card-default">
             <div class="card-header">
@@ -59,11 +66,9 @@ include('../../includes/navbar.php');
                  <?php
                             if (isset($_SESSION['statusEmail']) && $_SESSION['statusEmail'] != '') {
                               echo '
-                                    <div class="form-group">
                                     <div class="alert alert-danger alert-dismissible" >
                                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                         <i class="fa fa-exclamation-circle"></i> ' . $_SESSION['statusEmail'] . '
-                                    </div>
                                     </div>
                                     ';
                               unset($_SESSION['statusEmail']);
@@ -161,6 +166,7 @@ include('../../includes/navbar.php');
                 <!--<button type="submit" class="btn btn-secondary">Cancel</button>-->
 
                 <button type="submit" name="addUserBtn" class="btn btn-primary">Add</button>
+                <input type="reset" name="resetBtn" class="btn btn-dark float-right">
               </div>
             </form>
           </div>
@@ -269,7 +275,6 @@ include('../../includes/footer.php');
         },
         dob: {
           required: "Please select user birth date",
-
         },
         role: {
           required: "Please select user role",

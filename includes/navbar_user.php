@@ -171,7 +171,7 @@
     <!-- /.top navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4 side-">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
 
       <a href="<?php echo $base."dashboard/"; ?>" class="brand-link" style="text-align:center;">
@@ -201,13 +201,11 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2" id="navTag">
+          <!--Nav Bar class-->
           <ul class="nav nav-pills nav-sidebar flex-column nav-flat nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
             <li class="nav-header">Dashboard</li>
               <li class="nav-item">
-                <a href="<?php echo $base."dashboard/"; ?>" class="nav-link">
+                <a href="../dashboard/" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>Dashboard</p>
                 </a>
@@ -215,7 +213,7 @@
 
             <li class="nav-header">Notes</li>
               <li class="nav-item">
-                <a href="<?php echo $base."notes/"; ?>" class="nav-link">
+                <a href="../notes/" class="nav-link">
                   <i class="nav-icon fas fa-sticky-note"></i>
                   <p>Notes</p>
                 </a>
@@ -227,7 +225,7 @@
               ?>
                  <!--user (super)-->
                 <li class="nav-item">
-                  <a href="<?php echo $base."users/"; ?>" class="nav-link">
+                  <a href="../users/" class="nav-link">
                     <i class="nav-icon fas fa-user"></i>
                     <p>Users</p>
                   </a>
@@ -241,7 +239,7 @@
             if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin" || $_SESSION["user_role"] == "Staff"){
               ?>
                  <li class="nav-item">
-                  <a href="<?php echo $base."customers/"; ?>" class="nav-link">
+                  <a href="../customers/" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>Customers</p>
                   </a>
@@ -254,7 +252,7 @@
             if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
               ?>
                  <li class="nav-item">
-                  <a href="<?php echo $base."suppliers/"; ?>" class="nav-link">
+                  <a href="../suppliers/" class="nav-link">
                     <i class="nav-icon fa fa-user-plus"></i>
                     <p>
                       Suppliers
@@ -271,7 +269,7 @@
             if($_SESSION["user_role"] == "SuperUser"){
               ?>
                  <li class="nav-item">
-                <a href="<?php echo $base."company/"; ?>" class="nav-link">
+                <a href="../company/" class="nav-link">
                   <i class="nav-icon far fa-building"></i>
                   <p>
                     Company
@@ -294,49 +292,68 @@
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                          <a href="<?php echo $base."products/"; ?>" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                          <p>
+                            Products
+                            <i class="fas fa-angle-left right"></i>
+                          </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a href="../products/add.php" class="nav-link" id="prodManage">
+                            <i class="far fa-dot-circle nav-icon"></i>
                             <p>
-                              Products
-                              <span class="badge badge-info right"></span>
+                              Add Product
                             </p>
                           </a>
                         </li>
-                         <li class="nav-item">
-                          <a href="<?php echo $base."attributes/"; ?>" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
+                        <li class="nav-item">
+                          <a href="../products/" class="nav-link" id="prodManage">
+                            <i class="far fa-dot-circle nav-icon"></i>
                             <p>
-                              Attributes
-                              <span class="badge badge-info right"></span>
+                              Manage Product
                             </p>
                           </a>
                         </li>
-                       <li class="nav-item">
-                        <a href="<?php echo $base."brands/"; ?>" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>
-                            Brands
-                            <span class="badge badge-info right"></span>
-                          </p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="<?php echo $base."category/"; ?>" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>
-                            Category
-                            <span class="badge badge-info right"></span>
-                          </p>
-                        </a>
-                      </li>
-                  </ul>
-                </li>
+                      </ul> 
+                    </li>
+
+                    <li class="nav-item">
+                      <a href="../attributes/" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>
+                          Attributes
+                          <span class="badge badge-info right"></span>
+                        </p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="../brands/" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>
+                        Brands
+                        <span class="badge badge-info right"></span>
+                      </p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="../category/" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>
+                        Category
+                        <span class="badge badge-info right"></span>
+                      </p>
+                    </a>
+                  </li>
+                </ul>
+            </li>
               <?php
               }else{
-                ?>
+              ?>
                   <li class="nav-item">
-                    <a href="<?php echo $base."products/"; ?>" class="nav-link">
+                    <a href="../products/" class="nav-link">
                       <i class="nav-icon fas fa-fw fa-box"></i>
                       <p>
                         Products
@@ -348,10 +365,8 @@
             ?>
 
 
-            <?php
-            if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin" || $_SESSION["user_role"] == "Staff"){
-              ?>
-                 <li class="nav-item">
+
+                <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fa fa-shopping-bag"></i>
                   <p>
@@ -361,22 +376,25 @@
                 </a>
                 <ul class="nav nav-treeview">
                    <li class="nav-item">
-                    <a href="<?php echo $base."orders/add.php"; ?>" class="nav-link">
+                    <a href="../orders/add.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Add Order</p>
                     </a>
                   </li>
+                   <!--<li class="nav-item">
+                    <a href="../orders/cancel.php" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Cancelled Order</p>
+                    </a>
+                  </li>-->
                   <li class="nav-item">
-                    <a href="<?php echo $base."orders/"; ?>" class="nav-link">
+                    <a href="../orders/" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Manage Orders</p>
                     </a>
                   </li>
                 </ul>
               </li>
-              <?php
-            }
-            ?>
 
               <li class="nav-header">Reports</li>
 
@@ -394,7 +412,7 @@
                 if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin" ){
                   ?>
                   <li class="nav-item">
-                    <a href="<?php echo $base."reports/salesperson.php"; ?>" class="nav-link">
+                    <a href="../reports/salesperson.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Sales Person Report</p>
                     </a>
@@ -403,7 +421,7 @@
                   }else{
                     ?>
                   <li class="nav-item">
-                    <a href="<?php echo $base."reports/salesperson.php"; ?>" class="nav-link">
+                    <a href="../reports/salesperson.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Personal Sales Report</p>
                     </a>
@@ -416,7 +434,7 @@
                 if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin" ){
                   ?>
                   <li class="nav-item">
-                    <a href="<?php echo $base."reports/sales.php"; ?>" class="nav-link">
+                    <a href="../reports/sales.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Sales Report</p>
                     </a>
@@ -429,7 +447,7 @@
                 if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin" ){
                   ?>
                   <li class="nav-item">
-                    <a href="<?php echo $base."reports/summarySales.php"; ?>" class="nav-link">
+                    <a href="../reports/summarySales.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Summary Sales Report</p>
                     </a>
@@ -442,7 +460,7 @@
                 if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin" ){
                   ?>
                       <li class="nav-item">
-                        <a href="<?php echo $base."reports/summaryProfit.php"; ?>" class="nav-link">
+                        <a href="../reports/summaryProfit.php" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Summary Profit Report</p>
                         </a>
@@ -452,22 +470,6 @@
                 ?>
                 </ul>
               </li>
-
-             <?php
-            if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin" || $_SESSION["user_role"] == "Staff"){
-              ?>
-               <!-- <li class="nav-item">
-                <a href="../profile" class="nav-link">
-                  <i class="nav-icon far fa-address-card"></i>
-                  <p>
-                    Profile
-                  </p>
-                </a>
-              </li>-->
-              <?php
-            }
-            ?>
-
 
             <li class="nav-header">Settings</li>
             <!--Settings-->
@@ -484,7 +486,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="<?php echo $base."settings/"; ?>" class="nav-link">
+                    <a href="../settings/" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Account Settings</p>
                     </a>
@@ -493,7 +495,7 @@
                     if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
                     ?>
                       <li class="nav-item">
-                        <a href="<?php echo $base."settings/backup.php"; ?>" class="nav-link">
+                        <a href="../settings/backup.php" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Backup & Restore</p>
                         </a>
@@ -509,98 +511,96 @@
 
 
             <li class="nav-header">Recycle Bin</li>
-                 <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fa fa-trash"></i>
-                  <p>
-                    Recycle Bin
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-trash"></i>
+                <p>
+                  Recycle Bin <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
 
-                <ul class="nav nav-treeview">
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <?php
+                    if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
+                  ?>
+                      <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>
+                          Inventory
+                          <i class="right fas fa-angle-left"></i>
+                        </p>
+                      </a>
+                  <?php
+                    }
+                  ?>
+                  <ul class="nav nav-treeview">
+                    <?php
+                      if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
+                    ?>
+                        <li class="nav-item">
+                          <a href="../recycle/products.php" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Products</p>
+                          </a>
+                        </li>
+                    <?php
+                      }
+                    ?>
+
+                    <?php
+                      if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
+                    ?>
+                        <li class="nav-item">
+                          <a href="../recycle/attributes.php" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Attributes</p>
+                          </a>
+                        </li>
+                    <?php
+                      }
+                    ?>
+
+                    <?php
+                      if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
+                    ?>
+                        <li class="nav-item">
+                          <a href="../recycle/brands.php" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Brands</p>
+                          </a>
+                        </li>
+                    <?php
+                      }
+                    ?>
+
+                    <?php
+                      if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
+                    ?>
+                        <li class="nav-item">
+                          <a href="../ecycle/category.php" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Category</p>
+                          </a>
+                        </li>
+                    <?php
+                      }
+                    ?>
+                  </ul>
+
                   <li class="nav-item">
-                       <?php
-                    if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
-                    ?>
-                    <a href="#" class="nav-link">
+                    <a href="../recycle/customers.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>
-                        Inventory
-                        <i class="right fas fa-angle-left"></i>
-                      </p>
+                      <p>Customers</p>
                     </a>
-                      <?php
-                    }
-                  ?>
-                    <ul class="nav nav-treeview">
-                        <?php
-                    if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
-                    ?>
-                      <li class="nav-item">
-                        <a href="<?php echo $base."recycle/products.php"; ?>" class="nav-link">
-                          <i class="far fa-dot-circle nav-icon"></i>
-                          <p>Products</p>
-                        </a>
-                      </li>
-                        <?php
-                    }
-                  ?>
-
-                      <?php
-                    if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
-                    ?>
-                      <li class="nav-item">
-                        <a href="<?php echo $base."recycle/attributes.php"; ?>" class="nav-link">
-                          <i class="far fa-dot-circle nav-icon"></i>
-                          <p>Attributes</p>
-                        </a>
-                      </li>
-                        <?php
-                    }
-                  ?>
-
-                         <?php
-                    if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
-                    ?>
-                      <li class="nav-item">
-                        <a href="<?php echo $base."recycle/brands.php"; ?>" class="nav-link">
-                          <i class="far fa-dot-circle nav-icon"></i>
-                          <p>Brands</p>
-                        </a>
-                      </li>
-                        <?php
-                    }
-                  ?>
-
-                        <?php
-                    if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
-                    ?>
-                      <li class="nav-item">
-                        <a href="<?php echo $base."recycle/category.php"; ?>" class="nav-link">
-                          <i class="far fa-dot-circle nav-icon"></i>
-                          <p>Category</p>
-                        </a>
-                      </li>
-                       <?php
-                    }
-                  ?>
-
-                    </ul>
-
-                    <li class="nav-item">
-                        <a href="<?php echo $base."recycle/customers.php"; ?>" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Customers</p>
-                        </a>
-                    </li>
+                  </li>
 
                        <?php
                     if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
                     ?>
 
                     <li class="nav-item">
-                        <a href="<?php echo $base."recycle/suppliers.php"; ?>" class="nav-link">
+                        <a href="../recycle/suppliers.php" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Suppliers</p>
                         </a>
@@ -613,7 +613,7 @@
                     if($_SESSION["user_role"] == "SuperUser"){
                     ?>
                       <li class="nav-item">
-                        <a href="<?php echo $base."recycle/users.php"; ?>" class="nav-link">
+                        <a href="../recycle/users.php" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Users</p>
                         </a>
@@ -761,3 +761,10 @@ $(".nav-item a").on("click", function() {
 
 </script>
 
+    <script>
+        $(".nav-item a").on("click", function (e) {
+            $(".nav-item a").removeClass("active");
+            $(this).addClass("active");
+            e.preventDefault();
+        });
+    </script>

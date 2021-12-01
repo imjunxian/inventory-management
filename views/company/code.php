@@ -2,6 +2,33 @@
 
 include '../../database/security.php';
 
+if (isset($_POST['addBtn'])){
+
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $add1 = $_POST['add1'];
+    $add2 = $_POST['add2'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $country = $_POST['scountry'];
+    $postcode = $_POST['postcode'];
+
+    $query = "INSERT INTO company (companyName, address1, address2, postcode, city, state, country, contact, email) VALUES ('$name', '$add1', '$add2', '$postcode', '$city', '$state', '$country', '$contact', '$email')";
+    $query_run = mysqli_query($connection, $query);
+
+    if($query_run){
+        $_SESSION['status'] = "Sucessfully Added";
+        $_SESSION['status_code'] = "success";
+        header("Location: index.php?addsuccess");
+
+    }else{
+        $_SESSION['status'] = "Failed to Add";
+        $_SESSION['status_code'] = "error";
+        header("Location: edit.php?addfail");
+    }
+}
+
 if (isset($_POST['edit_btn'])){
 
     $id = $_POST['companyid'];
@@ -34,7 +61,7 @@ if (isset($_POST['edit_btn'])){
 
 // let edit user info display each of the edit user data
 if (isset($_POST['editBtn'])) {
-    $id = 1;
+    $id = $_POST["comid"];
     $query = "SELECT * From company WHERE companyId=$id";
     $query_run = mysqli_query($connection, $query);
 

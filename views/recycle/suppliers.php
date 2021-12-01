@@ -71,6 +71,7 @@ include('../../includes/navbar.php');
                   <table id="dataTable" class="table table-bordered table-striped">
                     <thead>
                       <tr>
+                        <th width="20">No</th>
                         <th>Supplier Name</th>
                         <th>Supplier Email</th>
                         <th>Supplier Contact</th>
@@ -86,16 +87,20 @@ include('../../includes/navbar.php');
                                 <th></th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
                           </tfoot>
 
                     <tbody>
                       <?php
                       if ($result > '0') {
+                        $n=0;
                         while ($row = $result->fetch_assoc()) {
+                          $n++;
                       ?>
                           <tr>
                             <form></form>
+                            <td><?php echo $n; ?></td>
                             <td><?php echo $row['supplierName']; ?></td>
                             <td><?php echo $row['supplierEmail']; ?></td>
                             <td><?php echo $row['supplierContact']; ?></td>

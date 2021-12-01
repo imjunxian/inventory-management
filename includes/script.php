@@ -130,11 +130,14 @@ $(document).ready(function() {
             "<'row'<'col-sm-5'i><'col-sm-7'p>>",
       "oLanguage": {
           "sLengthMenu": "Show _MENU_ records",
+          "info": "Showing _START_ to _END_ of _TOTAL_ Records",
+          "emptyTable": "No records available",
       },
       "aLengthMenu": [[5, 10, 15, 20, 50, 100, -1], [5, 10, 15, 20, 50, 100, 'All']],
       "responsive": true, 
       "lengthChange": true, 
       "autoWidth": false,
+      "paginationType": 'full_numbers',
       /*"scrollY": "500px",
       "scrollCollapse": true,*/
       "buttons": [
@@ -194,13 +197,16 @@ $(document).ready(function() {
               });
           });
       },
-     
+      infoCallback: function( settings, start, end, max, total, pre ) {
+        return "Showing " + start +" to "+ end + " of " + total +" records ";
+      }
+ 
     }).buttons().container().appendTo('#dataTable_wrapper .col-md-6:eq(0)');
 
-    $('.reloadTable').on('click', function(e){
+    /*$('.reloadTable').on('click', function(e){
     table.ajax.reload();
     console.log("hello");
-    });
+    });*/
 });
 
 //File Upload name (Image)
@@ -208,6 +214,7 @@ $(function () {
   bsCustomFileInput.init();
 });
 
+//Alert Notification auto Slide UP
 $("#success-alert").fadeTo(5000, 1000).slideUp(500, function(){
     $("#success-alert").slideUp(500);
 });
@@ -219,9 +226,7 @@ $("#success-alert").fadeTo(5000, 1000).slideUp(500, function(){
       ?>
       <script>
         swal({
-          toast: true,
           title: "<?php echo $_SESSION['status']?>",
-          //text: "You clicked the button!",
           icon: "<?php echo $_SESSION['status_code']?>",
           button: "OK",
           timer: 1300,
@@ -243,7 +248,6 @@ $("#success-alert").fadeTo(5000, 1000).slideUp(500, function(){
       <script>
         swal({
           title: "<?php echo $_SESSION['cstatus']?>",
-          //text: "You clicked the button!",
           icon: "<?php echo $_SESSION['cstatus_code']?>",
           button: "OK",
           timer: 1300,

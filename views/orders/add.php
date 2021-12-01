@@ -114,12 +114,10 @@ include('../../includes/navbar.php');
                     <?php
                             if (isset($_SESSION['statusPO']) && $_SESSION['statusPO'] != '') {
                               echo '
-                                    <div class="form-group">
                                       <div class="alert alert-danger alert-dismissible" >
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                           <i class="fa fa-exclamation-circle"></i> ' . $_SESSION['statusPO'] . '
                                       </div>
-                                    </div>
                                     ';
                               unset($_SESSION['statusPO']);
                             }
@@ -469,8 +467,7 @@ include('../../includes/footer.php');
   }
 
   // get the product information from the server
-  function getProductData(row_id)
-  {
+  function getProductData(row_id) {
     var product_id = $("#product_"+row_id).val();
     if(product_id == "") {
       $("#rate_"+row_id).val("");

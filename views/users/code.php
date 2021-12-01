@@ -291,11 +291,11 @@ if(isset($_POST["recycleBtn"])){
     $query->execute();
 
     if ($query) {
-        $_SESSION['status'] = "Successfully Moved";
+        $_SESSION['status'] = "Successfully Closed";
         $_SESSION['status_code'] = "success";
         header("Location: index.php?movedsuccess");
     } else {
-        $_SESSION['status'] = "Failed to Moved";
+        $_SESSION['status'] = "Failed to Closed";
         $_SESSION['status_code'] = "error";
         header("Location: index.php?movedfail");
     }

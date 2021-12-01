@@ -73,8 +73,7 @@ include('../../includes/navbar.php');
                               <div class=\"h6 font-weight-bold text-info text-uppercase mb-1\">Total Users: $row_sp</div>
                               <div class=\"h6 mb-0 font-weight-bold text-gray-800\">Active: $row_ac</div>
                               <div class=\"h6 mb-0 font-weight-bold text-gray-800\">Banned: $row_ba</div>
-                              <div class=\"h6 mb-0 font-weight-bold text-gray-800\">Closed: $row_cl</div>
-                              
+                              <div class=\"h6 mb-0 font-weight-bold text-gray-800\">Closed: $row_cl</div>                 
                               ";
                               ?>
                               
@@ -144,8 +143,7 @@ include('../../includes/navbar.php');
                                   <div class=\"h6 mb-0 font-weight-bold text-gray-800\">Offline: $row_f</div>
                               ";
 
-                              ?>
-                              
+                              ?>      
                             </div>
                             <div class="col-auto">
                               <!--<i class="fas fa-check-circle fa-2x text-gray-300"></i>-->
@@ -154,8 +152,7 @@ include('../../includes/navbar.php');
                         </div>
                     </div>
                   </div>
-              </div>
-       
+              </div>      
             </div>
 
             <div class="row">
@@ -177,13 +174,14 @@ include('../../includes/navbar.php');
                         $query = 'SELECT * FROM users WHERE userRoles != "SuperUser" AND status != "Closed"';
                         $query_run = mysqli_query($connection, $query);
                         //convert userID from 1 to USER-001
-                        $idquery = "SELECT CONCAT('USER-', LPAD(userId,3,'0')) AS user_id FROM users WHERE userRoles != 'SuperUser'";
-                        $idquery_run = mysqli_query($connection, $idquery);
+                        /*$idquery = "SELECT CONCAT('USER-', LPAD(userId,3,'0')) AS user_id FROM users WHERE userRoles != 'SuperUser'";
+                        $idquery_run = mysqli_query($connection, $idquery);*/
                         ?>
 
                         <table id="dataTable" class="table table-bordered table-striped">
                           <thead>
                             <tr>
+                              <th width="20">No</th>
                               <th width="60px">Image</th>
                               <th>Name</th>
                               <th >Email</th>
@@ -203,16 +201,20 @@ include('../../includes/navbar.php');
                                 <th></th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
                           </tfoot>
                          
                           <tbody>
                             <?php
                               if (mysqli_num_rows($query_run)> 0) {
+                                $n=0;
                                 while ($row = mysqli_fetch_assoc($query_run)) {
+                                  $n++;
                                 ?>
                                     <tr>
                                       <form></form>
+                                      <td><?php echo $n; ?></td>
                                       <td>
                                         <?php  
                                             if($row["profileImg"] == ""){
@@ -220,7 +222,7 @@ include('../../includes/navbar.php');
                                             <img class="img-profile rounded-circle" src="../../dist/img/avatar9.png" height="80px;" width="80px;">
                                             <?php
                                             }else{
-                                              echo '<img src="../../dist/img/profile/'.$row['profileImg'].'" width="80px" height="80px" class="img-circle" alt="image" />';
+                                              echo '<a href="../../dist/img/profile/'.$row['profileImg'].'"><img src="../../dist/img/profile/'.$row['profileImg'].'" width="80px" height="80px" class="img-circle" alt="image" /></a>';
                                             }
                                               
                                         ?>
@@ -230,11 +232,11 @@ include('../../includes/navbar.php');
                                         echo $row['userName'];
                                         if($row["currentStatus"] == "Online"){
                                           ?>
-                                          <span class="online" style="color:#28a745;">●</span>
+                                          <span class="online" style="color:#28a745;" data-toggle="tooltip" title="Online">●</span>
                                           <?php
                                         }else{
                                           ?>
-                                          <span class="online" style="color:#6c757d;">●</span>
+                                          <span class="online" style="color:#6c757d;" data-toggle="tooltip" title="Offline">●</span>
                                           <?php 
                                         }        
                                         ?>

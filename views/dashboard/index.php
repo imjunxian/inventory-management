@@ -30,19 +30,17 @@ include('../../includes/navbar.php');
   <section class="content">
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
-       <?php
-                if (isset($_SESSION['welcome']) && $_SESSION['welcome'] != '') {
-                  echo '
-                        <div class="form-group welcome" id="success-alert">
-                        <div class="alert alert-success alert-dismissible">
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <p class="h5"><i class="fa fa-check-circle"></i> ' . $_SESSION['welcome'] . '</p>
-                        </div>
-                        </div>
-                        ';
-                  unset($_SESSION['welcome']);
-                }
-            ?>
+        <?php
+          if (isset($_SESSION['welcome']) && $_SESSION['welcome'] != '') {
+            echo '
+                <div class="alert alert-success alert-dismissible welcome" id="success-alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <p class="h5"><i class="fa fa-check-circle"></i> ' . $_SESSION['welcome'] . '</p>
+                </div>
+                ';
+            unset($_SESSION['welcome']);
+          }
+        ?>
       <div class="row">
         <div class="col-lg-3 col-6">
           <!-- small box -->
@@ -372,7 +370,7 @@ include('../../includes/navbar.php');
                             <img class="rounded-circle" src="../../dist/img/prodDefault.png" height="100;" width="100;" alt="image">
                           <?php
                           }else{
-                            echo '<img src="../../dist/img/productImage/'.$row['productImage'].'" class="img-size-100" alt="image" />';
+                            echo '<a href="../../dist/img/productImage/'.$row['productImage'].'"><img src="../../dist/img/productImage/'.$row['productImage'].'" class="img-size-100" alt="image" /></a>';
                           }                                              
                         ?>
                       </div>
@@ -409,7 +407,7 @@ include('../../includes/navbar.php');
                           
                           ?>
                           <br>
-                          <b>RM <?php echo $row['productPrice']; ?></b>,
+                          <b>RM <?php echo number_format($row['productPrice'],2); ?></b>,
                            Qtt: <b><?php echo $row['productQuantity']; ?></b>&nbsp;
                           <?php
                                 if($row['productQuantity'] == '1' && $row['productQuantity'] > '0'){
@@ -475,7 +473,7 @@ include('../../includes/navbar.php');
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Daily Sales - <b><?php echo date("F");?></b></h5>
+                <h5 class="card-title">Sales - <b><?php echo date("F");?></b></h5>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -522,7 +520,7 @@ include('../../includes/navbar.php');
                       <div class="description-block border-right">
                         <!--<span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 0%</span>-->
                         <h5 class="description-header">RM <?php echo number_format($row["sales"],2); ?></h5>
-                        <span class="description-text">TOTAL SALES</span>
+                        <span class="description-text">TODAY SALES</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
@@ -532,7 +530,7 @@ include('../../includes/navbar.php');
                       <div class="description-block border-right">
                         <!--<span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 0%</span>-->
                         <h5 class="description-header">RM <?php echo number_format($row["cost"],2); ?></h5>
-                        <span class="description-text">TOTAL COST</span>
+                        <span class="description-text">SALES COST</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
@@ -543,7 +541,7 @@ include('../../includes/navbar.php');
                       <div class="description-block border-right">
                         <!--<span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 20%</span>-->
                        <h5 class="description-header">RM <?php echo number_format($row["profit"],2); ?></h5>
-                        <span class="description-text">TOTAL PROFIT</span>
+                        <span class="description-text">TODAY PROFIT</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
@@ -622,12 +620,12 @@ include('../../includes/navbar.php');
             <div class="card-body">
               <div>
                 <?php
-                  $query_tt = "SELECT brandId FROM brands WHERE status='Active' ORDER BY brandId";
+                  $query_tt = "SELECT products.brandId, brands.brandName, COUNT(*) AS number FROM products INNER JOIN brands ON brands.brandId = products.brandId WHERE products.status='Active' GROUP BY products.brandId";
                   $query_tt_run = mysqli_query($connection, $query_tt);
                   $row_tt = mysqli_num_rows($query_tt_run);
                 ?>
                 <h6>
-                Total Active Brands: <span class="text-dark"><?php echo "$row_tt"; ?></span>
+                Total Brand Used: <span class="text-dark"><?php echo "$row_tt"; ?></span>
                 </h6>
 
               </div>

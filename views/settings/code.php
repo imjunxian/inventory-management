@@ -146,39 +146,48 @@ if(isset($_POST["exportBtn"])){
 
      $output = '';
      foreach($results as $table){
-      $output .= "\n\n" . "DROP TABLE " . $table["Tables_in_fyp"] . ";\n";
-      $show_table_query = "SHOW CREATE TABLE " . $table["Tables_in_fyp"] . "";
-      $statement = $connect->prepare($show_table_query);
-      $statement->execute();
-      $show_table_result = $statement->fetchAll();
+        
+        //Drop Table
+        $output .= "\n\n" . "DROP TABLE " . $table["Tables_in_fyp"] . ";\n";
 
-      foreach($show_table_result as $show_table_row){
-       $output .= "\n" . $show_table_row["Create Table"] . ";\n";
-      }
-      $select_query = "SELECT * FROM " . $table["Tables_in_fyp"] . "";
-      $statement = $connect->prepare($select_query);
-      $statement->execute();
-      $total_row = $statement->rowCount();
+        //Show all created Table
+        $show_table_query = "SHOW CREATE TABLE " . $table["Tables_in_fyp"] . "";
+        $statement = $connect->prepare($show_table_query);
+        $statement->execute();
+        $show_table_result = $statement->fetchAll();
 
-      for($count=0; $count<$total_row; $count++){
-       $single_result = $statement->fetch(PDO::FETCH_ASSOC);
-       $table_column_array = array_keys($single_result);
-       $table_value_array = array_values($single_result);
-       $output .= "\nINSERT INTO ".$table['Tables_in_fyp']." (";
-       $output .= "" . implode(", ", $table_column_array) . ") VALUES (";
-       $output .= "'" . implode("','", $table_value_array) . "');\n";
-      }
+        //Create Table
+        foreach($show_table_result as $show_table_row){
+            $output .= "\n" . $show_table_row["Create Table"] . ";\n";
+        }
+
+        //Select all data in all table
+        $select_query = "SELECT * FROM " . $table["Tables_in_fyp"] . "";
+        $statement = $connect->prepare($select_query);
+        $statement->execute();
+        $total_row = $statement->rowCount();
+
+        //Insert Statement 
+        for($count=0; $count<$total_row; $count++){
+           $single_result = $statement->fetch(PDO::FETCH_ASSOC);
+           $table_column_array = array_keys($single_result);
+           $table_value_array = array_values($single_result);
+           $output .= "\nINSERT INTO ".$table['Tables_in_fyp']." (";
+           $output .= "" . implode(", ", $table_column_array) . ") VALUES (";
+           $output .= "'" . implode("','", $table_value_array) . "');\n";
+        }
+
      }
      
-     $file_handle = fopen($file_name, 'w+');
-     fwrite($file_handle, $output);
-     fclose($file_handle);
-     header('Content-Description: File Transfer');
-     header('Content-Type: application/octet-stream');
-     header('Content-Disposition: attachment; filename=' . basename($file_name));
-     header('Content-Transfer-Encoding: binary');
-     header('Expires: 0');
-     header('Cache-Control: must-revalidate');
+    $file_handle = fopen($file_name, 'w+');
+    fwrite($file_handle, $output);
+    fclose($file_handle);
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename=' . basename($file_name));
+    header('Content-Transfer-Encoding: binary');
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate');
     header('Pragma: public');
     header('Content-Length: ' . filesize($file_name));
     ob_clean();

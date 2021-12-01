@@ -35,7 +35,7 @@ include('../../includes/navbar.php');
                         <div class="card">
                             <div class="card-body">
                                 <div class="col-xl-4 col-md-6 col-sm-12">
-                                <form action="code.php" method="POST">
+                                <form action="code.php" method="POST" id="statusForm">
                                 <div class="input-group" style="">
                                 <!--<input type="text" class="form-control" name="datepicker" id="datepicker"  placeholder="Select Year" />-->
                                 <select class="form-control multiselect" id="status" name="status">
@@ -161,7 +161,7 @@ include('../../includes/navbar.php');
                                       <img class="rounded-circle" src="../../dist/img/prodDefault.png" height="100;" width="100;" alt="image">
                                     <?php
                                   }else{
-                                    echo '<img src="../../dist/img/productImage/'.$row['productImage'].'" width="100" height="100" class="img-circle" alt="image" />';
+                                    echo '<a href="../../dist/img/productImage/'.$row['productImage'].'"><img src="../../dist/img/productImage/'.$row['productImage'].'" width="100" height="100" class="img-circle" alt="image" /></a>';
                                   }
                                               
                               ?>
@@ -386,4 +386,33 @@ include('../../includes/footer.php');
       theme: 'bootstrap4'
     });
 });   
+
+ $(function() {
+
+    $('#statusForm').validate({
+      rules: {
+        status: {
+          required: true,
+        },
+
+      },
+      messages: {
+        status: {
+          required: "Stock Status is required.",
+        },
+       
+      },
+      errorElement: 'span',
+      errorPlacement: function(error, element) {
+        error.addClass('invalid-feedback');
+        element.closest('.input-group').append(error);
+      },
+      highlight: function(element, errorClass, validClass) {
+        $(element).addClass('is-invalid');
+      },
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).removeClass('is-invalid');
+      },
+    });
+  });
 </script>

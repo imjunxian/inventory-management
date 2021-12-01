@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2021 at 02:28 PM
+-- Generation Time: Nov 08, 2021 at 08:42 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -95,7 +95,7 @@ CREATE TABLE `backup` (
 --
 
 INSERT INTO `backup` (`backupId`, `name`, `dateTime`, `users`) VALUES
-(73, 'Backup_18-10-2021_(23-39-28).sql', '18 Oct 2021 23:39:28', '6');
+(82, 'Backup_01-11-2021_(17-22-09).sql', '01 Nov 2021 17:22:09', '6');
 
 -- --------------------------------------------------------
 
@@ -229,7 +229,9 @@ INSERT INTO `notes` (`Id`, `title`, `description`, `date`, `userId`) VALUES
 (28, 'Note2', 'Note2 Description', 'Fri, 15 Oct 2021, 19:19:03', '6'),
 (29, 'Note3', 'Note3 Description\r\n', 'Fri, 15 Oct 2021, 19:19:38', '6'),
 (30, 'Note4', 'Note4 Description', 'Fri, 15 Oct 2021, 19:19:49', '6'),
-(31, 'Note5', 'Note5 Description5\r\n', 'Fri, 15 Oct 2021, 19:20:10', '6');
+(31, 'Note5', 'Note5 Description5\r\n', 'Fri, 15 Oct 2021, 19:20:10', '6'),
+(39, 'Note6', 'Description Note6', 'Tue, 02 Nov 2021, 09:38:51', '6'),
+(40, 'Note7', 'Description Note7', 'Tue, 02 Nov 2021, 09:38:57', '6');
 
 -- --------------------------------------------------------
 
@@ -272,7 +274,8 @@ INSERT INTO `orderitem` (`Id`, `orderId`, `productId`, `quantity`, `unitAmount`,
 (29, 24, 4, '2', '1099', '2198.00'),
 (30, 27, 3, '1', '4599', '4599.00'),
 (31, 27, 10, '1', '89', '89.00'),
-(32, 27, 4, '1', '1099', '1099.00');
+(32, 27, 4, '1', '1099', '1099.00'),
+(34, 29, 19, '1', '1299', '1299.00');
 
 -- --------------------------------------------------------
 
@@ -319,7 +322,8 @@ INSERT INTO `orders` (`orderId`, `invoiceNo`, `orderCustName`, `orderCustContact
 (21, 'PO-1310561', 'cust12', '0126789902', 'cust12@cust.com', '7794.00', '0', '7794.00', '5994.00', 'Cash', 'Completed', '14 Oct 2021 16:57:45', 'Oct', '2021', '14 Oct 2021', '16:57:45', '1800.00', '7', 'ecd'),
 (22, 'PO-4936286', 'cust12', '0126789902', 'cust12@cust.com', '6599.00', '0', '6599.00', '6299.00', 'Cash', 'Completed', '14 Oct 2021 17:02:33', 'Oct', '2021', '14 Oct 2021', '17:02:33', '300.00', '16', 'Blabla'),
 (24, 'PO-1571943', 'cust15', '0152242223', 'cust15@cust15.com', '8797.00', '0', '8797.00', '8297.00', 'Cash', 'Completed', '14 Oct 2021 21:43:38', 'Oct', '2021', '14 Oct 2021', '21:43:38', '500.00', '10', 'BlahBlahBlah'),
-(27, 'PO-4849174', 'cust17', '0192890097', 'cust17@cust.com', '5787.00', '0', '5787.00', '5367.00', 'Cash', 'Completed', '18 Oct 2021 23:44:31', 'Oct', '2021', '18 Oct 2021', '23:44:31', '420.00', '6', 'qqqq');
+(27, 'PO-4849174', 'cust17', '0192890097', 'cust17@cust.com', '5787.00', '0', '5787.00', '5367.00', 'Cash', 'Completed', '18 Oct 2021 23:44:31', 'Oct', '2021', '18 Oct 2021', '23:44:31', '420.00', '6', 'qqqq'),
+(29, 'PO-7155862', 'cust12', '0126789902', 'cust12@cust.com', '1299.00', '0', '1299.00', '999.00', 'Cash', 'Completed', '05 Nov 2021 15:52:39', 'Nov', '2021', '05 Nov 2021', '15:52:39', '300.00', '6', 'fbfbf');
 
 -- --------------------------------------------------------
 
@@ -340,8 +344,7 @@ CREATE TABLE `password_reset` (
 --
 
 INSERT INTO `password_reset` (`Id`, `email`, `selector`, `token`, `expires`) VALUES
-(106, 'leejx-pm19@student.tarc.edu.my', 'de1d7178da9ad753', '$2y$10$i8P.gW8yHlKLubvrR5yei.rc52TefbxEjJI4ilpVh7fJrCyDDc9NK', '1634630499'),
-(107, 'junxian010729@gmail.com', '46e514a6fb73fd96', '$2y$10$ks6hwMpmepQTbtlYzY.naOKyWNHgP/vlJSaawvC3SXyue4nFJL5ru', '1635159002');
+(111, 'junxian010729@gmail.com', 'ee7798d37ea612bc', '$2y$10$tRXj69DcaBwhk/kPSKIF9eP4z/Z/mfpcuKVy7cveWSN6Jv0zDdpOq', '1636099780');
 
 -- --------------------------------------------------------
 
@@ -378,9 +381,9 @@ INSERT INTO `products` (`productId`, `productSKU`, `productName`, `productImage`
 (6, 'IPHN12', 'Apple IPhone 12', 'p2.jpg', '1', '3599', '3399', 'Color : Red, 256GB. Warranty 1 year in Apple Service Center.', '1', '[\"2\"]', '[\"5\",\"25\"]', '[\"7\"]', 'Available', 'Active', '2021-09-06 13:44:50'),
 (10, 'IPHCABLE', 'Apple IPhone Lightning Cable', 'p5.jpg', '9', '89', '69', 'Apple Original Charging Cable. Warranty 3 months.', '1', '[\"4\"]', '[\"7\"]', '[\"7\"]', 'Available', 'Active', '2021-09-06 18:34:01'),
 (16, 'ASROG', 'Asus ROG', 'asusrog.jpg', '4', '2499', '2299', 'Processor: speed-binned 2.96GHz Qualcomm Snapdragon 845.&nbsp;RAM &amp; Storage: 512GB / 1TB, 12 GB RAM', '10', '[\"4\"]', '[\"1\",\"7\"]', '[\"12\"]', 'Unavailable', 'Active', '2021-09-21 03:50:25'),
-(17, 'HWMATE', 'Huawei Mate 30 Pro', 'huaweimate30pro.png', '5', '2999', '2799', '8GB RAM 128GB Storage.', '4', '[\"4\"]', '[\"5\"]', '[\"7\"]', 'Available', 'Inactive', '2021-09-21 03:52:04'),
-(18, 'VVNEX', 'Vivo Nex 3', 'vivonex3.png', '1', '3299', '2999', '8GB RAM 128GB Storage.', '3', '[\"4\"]', '[\"1\"]', '[\"16\"]', 'Available', 'Active', '2021-09-21 03:53:12'),
-(19, 'KPSMC', 'Klipsch T5 II True Wireless Sport McLaren Edition Earphones', 'klipsch.jpg', '5', '1299', '999', 'It designed for the harshest, loudest conditions on the planet. Engineered for extreme performance and reliability. Forged with premium materials and advanced technology. Created in concert with McLaren for the ultimate in fidelity, fit and finish. #SPEEDOFSOUND', '11', '[\"2\"]', '[\"1\"]', '[\"1\"]', 'Available', 'Active', '2021-09-27 13:52:28'),
+(17, 'HWMATE', 'Huawei Mate 30 Pro', 'huaweimate30pro.png', '5', '2999', '2799', '8GB RAM 128GB Storage.', '4', '[\"4\"]', '[\"5\",\"24\"]', '[\"7\"]', 'Available', 'Inactive', '2021-09-21 03:52:04'),
+(18, 'VVNEX', 'Vivo Nex 3', 'vivonex3.png', '0', '3299', '2999', '8GB RAM 128GB Storage.', '3', '[\"4\"]', '[\"1\"]', '[\"16\"]', 'Available', 'Active', '2021-09-21 03:53:12'),
+(19, 'KPSMC', 'Klipsch T5 II True Wireless Sport McLaren Edition Earphones', 'klipsch.jpg', '4', '1299', '999', 'It designed for the harshest, loudest conditions on the planet. Engineered for extreme performance and reliability. Forged with premium materials and advanced technology. Created in concert with McLaren for the ultimate in fidelity, fit and finish. #SPEEDOFSOUND', '11', '[\"2\"]', '[\"1\"]', '[\"1\"]', 'Available', 'Active', '2021-09-27 13:52:28'),
 (20, 'IPH13PM', 'IPhone 13 Pro Max', 'iphone-13-pro-max-graphite.png', '0', '7599', '7299', '', '1', '[\"4\"]', '[\"21\"]', '[\"16\"]', 'Available', 'Active', '2021-09-28 14:43:40'),
 (28, 'APPMACBPRO', 'Apple Macbook Pro 13 inches 2020', 'macbookpro1.jpg', '3', '6599', '6299', 'Apple Macbook Pro 2020 256GB.', '1', '[\"15\"]', '[\"28\",\"25\"]', '[\"16\"]', 'Available', 'Active', '2021-10-12 14:28:09');
 
@@ -435,9 +438,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userId`, `userName`, `userEmail`, `userContact`, `userGender`, `userBirthDate`, `userRoles`, `userPassword`, `status`, `lastLogin`, `currentStatus`, `profileImg`) VALUES
-(6, 'Jun Xian', 'junxian010729@gmail.com', '0124293014', 'Male', '2001-07-29', 'SuperUser', '$2y$10$F4cPSTpZqsGizPCcp1PqTOvvMoTnGx/7MIJqZAWGANcl7OKxRh1SK', 'Active', 'Mon 20:03:54 25/10/2021', 'Online', 'heartPirates.jpg'),
-(7, 'demo2', 'demo2@demo.com', '0124925526', 'Male', '1998-06-24', 'Admin', '$2y$10$LoxFUC0UlzuGkPgA2gskKOykdqBqqH6j5EdwBZ5JNVwd5Pbpdzvie', 'Active', 'Thu 20:37:19 21/10/2021', 'Offline', 'demon.jpg'),
-(10, 'demo3', 'demo3@demo.com', '0124355621', 'Female', '1999-02-16', 'Staff', '$2y$10$jxt/xqog2S0UMSTAFfiXA.5GZK6bCabofyWpTf0jX6IiMZ/54HBuC', 'Active', 'Mon 00:17:04 18/10/2021', 'Offline', 'jisoo.jpg'),
+(6, 'Jun Xian', 'junxian010729@gmail.com', '0124293014', 'Male', '2001-07-29', 'SuperUser', '$2y$10$F4cPSTpZqsGizPCcp1PqTOvvMoTnGx/7MIJqZAWGANcl7OKxRh1SK', 'Active', 'Mon 15:37:25 08/11/2021', 'Online', 'heartPirates.jpg'),
+(7, 'demo2', 'demo2@demo.com', '0124925526', 'Male', '1998-06-24', 'Admin', '$2y$10$LoxFUC0UlzuGkPgA2gskKOykdqBqqH6j5EdwBZ5JNVwd5Pbpdzvie', 'Active', 'Fri 22:44:13 05/11/2021', 'Offline', 'demon.jpg'),
+(10, 'demo3', 'demo3@demo.com', '0124355621', 'Female', '1999-02-16', 'Staff', '$2y$10$jxt/xqog2S0UMSTAFfiXA.5GZK6bCabofyWpTf0jX6IiMZ/54HBuC', 'Active', 'Mon 16:09:36 01/11/2021', 'Offline', 'jisoo.jpg'),
 (11, 'demo4', 'demo4@demo.com', '01234567655', 'Female', '2002-03-13', 'Staff', '$2y$10$R1pcDTC7FaTEL9.YCSEzoOjUWGVF2P62CgInng4aF6nxUKsQ206Gm', 'Banned', 'Sun 23:23:30 22/08/2021', 'Offline', ''),
 (13, 'demo5', 'demo5@demo.com', '0124556789', 'Male', '1994-08-15', 'Staff', '$2y$10$ZJNKlbXdDl930.na8oSqAu.FeUctLmZMfoU6bbaD.xRlPYImQE38a', 'Banned', 'Sun 23:23:44 22/08/2021', 'Offline', ''),
 (16, 'demo6', 'demo6@demo.com', '01243356798', 'Female', '1997-05-07', 'Staff', '$2y$10$XUzQ5zMqMCXAu4xxAXJgAeLs9pYbIWYT3j38snRQIcDQlDYBRm6Ga', 'Active', 'Thu 17:02:13 14/10/2021', 'Offline', ''),
@@ -553,7 +556,7 @@ ALTER TABLE `attributes_value`
 -- AUTO_INCREMENT for table `backup`
 --
 ALTER TABLE `backup`
-  MODIFY `backupId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `backupId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `brands`
@@ -583,31 +586,31 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `orderitem`
 --
 ALTER TABLE `orderitem`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `password_reset`
 --
 ALTER TABLE `password_reset`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `suppliers`

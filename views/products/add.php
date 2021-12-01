@@ -48,6 +48,13 @@ include('../../includes/navbar.php');
       <div class="row">
         <!-- left column -->
         <div class="col-md-12">
+         
+              <div class="alert alert-info alert-dismissible" >
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <i class="fa fa-exclamation-triangle"></i> Notes: The maximum image attached file size is 5MB.
+                  The only accepted format are png, jpg and jpeg.
+              </div>
+        
           <!-- general form elements -->
           <div class="card card-default">
             <div class="card-header">
@@ -60,11 +67,9 @@ include('../../includes/navbar.php');
                  <?php
                             if (isset($_SESSION['statusSKU']) && $_SESSION['statusSKU'] != '') {
                               echo '
-                                    <div class="form-group">
                                     <div class="alert alert-danger alert-dismissible" >
                                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                         <i class="fa fa-exclamation-circle"></i> ' . $_SESSION['statusSKU'] . '
-                                    </div>
                                     </div>
                                     ';
                               unset($_SESSION['statusSKU']);
@@ -206,6 +211,7 @@ include('../../includes/navbar.php');
                 <a href="javascript:history.go(-1)" class="btn btn-secondary">Cancel</a>
                 <!--<button type="submit" class="btn btn-secondary">Cancel</button>-->
                 <button type="submit" name="addBtn" class="btn btn-primary">Add</button>
+                <input type="reset" name="resetBtn" class="btn btn-dark float-right">
               </div>
             </form>
           </div>

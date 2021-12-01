@@ -96,7 +96,6 @@ include('../../includes/header.php');
 
 </style>
 
-
 <body id="body">
   <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
     <div class="container">
@@ -116,12 +115,12 @@ include('../../includes/header.php');
               <?php
                 if (isset($_SESSION['status']) && $_SESSION['status'] != '') {
                   echo '
-                        <div class="form-group"  style="max-width: 400px;" id="success-alert">
-                        <div class="alert alert-danger alert-dismissible" >
+
+                        <div class="alert alert-danger alert-dismissible" style="max-width: 400px;" id="success-alert">
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <i class="fa fa-exclamation-circle"></i> ' . $_SESSION['status'] . '
                         </div>
-                        </div>
+   
                         ';
                   unset($_SESSION['status']);
                 }
@@ -130,11 +129,9 @@ include('../../includes/header.php');
             <?php
                 if (isset($_SESSION['successStatus']) && $_SESSION['successStatus'] != '') {
                   echo '
-                        <div class="form-group"  style="max-width: 400px;" id="success-alert">
-                        <div class="alert alert-success alert-dismissible ">
+                        <div class="alert alert-success alert-dismissible" style="max-width: 400px;" id="success-alert">
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <i class="fa fa-check-circle"></i> ' . $_SESSION['successStatus'] . '
-                        </div>
                         </div>
                         ';
                   unset($_SESSION['successStatus']);

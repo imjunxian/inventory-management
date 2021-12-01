@@ -6355,6 +6355,11 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   overflow-y: auto;
 }
 
+.modal-body{
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
 .modal-dialog-centered {
   display: -webkit-flex;
   display: -ms-flexbox;

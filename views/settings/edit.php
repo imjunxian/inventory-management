@@ -32,6 +32,11 @@ include('../../includes/navbar.php');
         <div class="row">
           <!-- left column -->
           <div class="col-md-12">
+            <div class="alert alert-info alert-dismissible" >
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <i class="fa fa-exclamation-triangle"></i> Notes: The maximum image attached file size is 5MB.
+                  The only accepted format are png, jpg and jpeg.
+              </div>
             <!-- general form elements -->
             <div class="card card-default">
               <div class="card-header">
@@ -56,12 +61,12 @@ include('../../includes/navbar.php');
                            <?php
                             if (isset($_SESSION['statusProfile']) && $_SESSION['statusProfile'] != '') {
                               echo '
-                                    <div class="form-group">
+
                                     <div class="alert alert-danger alert-dismissible" >
                                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                        <i class="fa fa-exclamation-circle"></i> ' . $_SESSION['statusProfile'] . '
                                     </div>
-                                    </div>
+                             
                                     ';
                               unset($_SESSION['statusProfile']);
                             }
@@ -229,7 +234,7 @@ include('../../includes/footer.php');
       gender: {
         required: true,
       },
-      quantity: {
+      dob: {
         required: true,
       },
       file:{
@@ -253,8 +258,8 @@ include('../../includes/footer.php');
       gender:{
         required: "Please select your gender",
       },
-      quantity: {
-        required: "Quantity cannot be empty",
+      dob: {
+          required: "Please select user birth date",
       },
       file:{
         required: "Image cannot be empty",
