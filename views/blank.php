@@ -1,5 +1,6 @@
 <?php
 include('../../database/security.php');
+$title = "Blank Page";
 include('../../includes/header.php');
 include('../../includes/navbar.php');
 ?>

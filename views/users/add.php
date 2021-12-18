@@ -143,20 +143,34 @@ include('../../includes/navbar.php');
                   </div>
                 </div>
 
+                <hr class="my-4" />
 
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <span class="fas fa-eye field-icon toggle-password" toggle="#password-field"></span>
-                  <input type="password" class="form-control" id="pass" placeholder="Password" name="password">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <span class="fas fa-eye field-icon toggle-password" toggle="#password-field"></span>
+                      <input type="password" class="form-control" id="pass" placeholder="Password" name="password">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Confirm Password</label>
+                      <span class="fas fa-eye field-icon toggle-cpassword" toggle="#password-field"></span>
+                      <input type="password" class="form-control" id="cpass" placeholder="Confirm Password" name="cpassword">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <p class="mb-2">Password requirements</p>
+                    <p class="small text-muted mb-2">To change a new password, you have to meet all of the following requirements:</p>
+                    <ul class="small text-muted pl-4 mb-0">
+                      <li>Minimum 8 characters</li>
+                      <li>At least One Uppercase</li>
+                      <li>At least One Lowercase</li>
+                      <li>At least One Number</li>
+                    </ul>
+                  </div>
                 </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Confirm Password</label>
-                  <span class="fas fa-eye field-icon toggle-cpassword" toggle="#password-field"></span>
-                  <input type="password" class="form-control" id="cpass" placeholder="Confirm Password" name="cpassword">
-                </div>
-
-              
 
               </div>
               <!-- /.card-body -->

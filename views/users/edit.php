@@ -199,6 +199,8 @@ include('../../includes/navbar.php');
                       </div>
                     </div>
 
+                    <hr class="my-4" />
+
                     <div class="form-group">
                       <div class="alert alert-info alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -206,25 +208,39 @@ include('../../includes/navbar.php');
                       </div>
                     </div>
 
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Current Password</label>
+                          <span class="fas fa-eye field-icon toggle-opassword" toggle="#password-field"></span>
+                          <input type="password" class="form-control" id="opass" placeholder="Current Password" name="oldpass" value="">
+                        </div>
 
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Current Password</label>
-                      <span class="fas fa-eye field-icon toggle-opassword" toggle="#password-field"></span>
-                      <input type="password" class="form-control" id="opass" placeholder="Current Password" name="oldpass" value="">
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Password</label>
+                          <span class="fas fa-eye field-icon toggle-password" toggle="#password-field"></span>
+                          <input type="password" class="form-control" id="pass" placeholder="New Password" name="password" value="">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Confirm Password</label>
+                          <span class="fas fa-eye field-icon toggle-cpassword" toggle="#password-field"></span>
+                          <input type="password" class="form-control" id="cpass" placeholder="Confirm New Password" name="cpassword" value="">
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <p class="mb-2">Password requirements</p>
+                        <p class="small text-muted mb-2">To change a new password, you have to meet all of the following requirements:</p>
+                        <ul class="small text-muted pl-4 mb-0">
+                          <li>Minimum 8 characters</li>
+                          <li>At least One Uppercase</li>
+                          <li>At least One Lowercase</li>
+                          <li>At least One Number</li>
+                        </ul>
+                      </div>
+                      
                     </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <span class="fas fa-eye field-icon toggle-password" toggle="#password-field"></span>
-                      <input type="password" class="form-control" id="pass" placeholder="New Password" name="password" value="">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Confirm Password</label>
-                      <span class="fas fa-eye field-icon toggle-cpassword" toggle="#password-field"></span>
-                      <input type="password" class="form-control" id="cpass" placeholder="Confirm New Password" name="cpassword" value="">
-                    </div>
-
 
                   </div>
                   <!-- /.card-body -->

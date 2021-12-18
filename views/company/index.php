@@ -303,7 +303,7 @@ include('../../includes/navbar.php');
                     </div>
 
                     <div class="card-body">
-                        <div id="map"></div>
+                        <div id="maps" class="maps" style="height:500px;"></div>
                     </div>
 
                     <div class="card-footer">
@@ -330,102 +330,33 @@ include('../../includes/navbar.php');
 include('../../includes/script.php');
 include('../../includes/footer.php');
 ?>
- <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCd62WwUBWwl-8_6mvycgMFVHxB8WhDuaA&callback=initMap&libraries=&v=weekly&channel=2"
-      async
-    ></script>
+
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCd62WwUBWwl-8_6mvycgMFVHxB8WhDuaA&callback=myMap"></script>-->
+<!--<script src="https://maps.googleapis.com/maps/api/js"></script>-->
+<link rel="stylesheet" src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/css/ol.css"/>
+<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js"></script>
 
 <script type="text/javascript">
-    // Initialize and add the map
-    function initMap() {
-      // The location of Uluru
-      const uluru = { lat: -25.344, lng: 131.036 };
-      // The map, centered at Uluru
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 4,
-        center: uluru,
-        mapTypeId: "roadmap",
-      });
-      // The marker, positioned at Uluru
-      const marker = new google.maps.Marker({
-        position: uluru,
-        map: map,
-      });
-    }
-    /*function loadMap(){
-        var bt = {lat: 5.4380, lng: 100.3882};
-        maps = new google.maps.Map(document.getElementById('maps'), {
-          zoom: 12,
-          center: bt
-        });
-
-        var marker = new google.maps.Marker({
-          position: bt,
-          map: maps
-        });
-,
-        var cdata = JSON.parse(document.getElementById('data').innerHTML);
-        geocoder = new google.maps.Geocoder();  
-        codeAddress(cdata);
-
-        var allData = JSON.parse(document.getElementById('allData').innerHTML);
-        showAllColleges(allData)
-
-    }
-
-    function showAllColleges(allData) {
-    var infoWind = new google.maps.InfoWindow;
-    Array.prototype.forEach.call(allData, function(data){
-        var content = document.createElement('div');
-        var strong = document.createElement('strong');
-        
-        strong.textContent = data.name;
-        content.appendChild(strong);
-
-        var img = document.createElement('img');
-        img.src = 'img/Leopard.jpg';
-        img.style.width = '100px';
-        content.appendChild(img);
-
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(data.lat, data.lng),
-          map: map
-        });
-
-        marker.addListener('mouseover', function(){
-            infoWind.setContent(content);
-            infoWind.open(map, marker);
+   /*function initialize(){
+    var mapProp = {
+        center: new google.maps.LatLng(51.508742, -0.120850), zoom: 5,
+        mapTypeId: google.maps.mapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("maps"), mapProp);
+   }
+   google.maps.event.addDomListener(window, 'load', initialize);*/
+   var map = new ol.Map({
+    target: 'maps',
+    layers: [
+        new ol.layer.Tile({
+            source: new ol.source.OSM()
         })
+    ],
+    view: new ol.View({
+        center: ol.proj.fromLonLat([37.41, 8.82]),OSM,
+        zoom: 4
     })
-}
-
-function codeAddress(cdata) {
-   Array.prototype.forEach.call(cdata, function(data){
-        var address = data.name + ' ' + data.address;
-        geocoder.geocode( { 'address': address}, function(results, status) {
-          if (status == 'OK') {
-            map.setCenter(results[0].geometry.location);
-            var points = {};
-            points.id = data.id;
-            points.lat = map.getCenter().lat();
-            points.lng = map.getCenter().lng();
-            updateCollegeWithLatLng(points);
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-    });
-}
-
-function updateCollegeWithLatLng(points) {
-    $.ajax({
-        url:"action.php",
-        method:"post",
-        data: points,
-        success: function(res) {
-            console.log(res)
-        }
-    })*/
+   });
 
 </script>
 

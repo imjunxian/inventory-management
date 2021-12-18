@@ -57,32 +57,32 @@
 
         <div class="topbar-divider d-none d-sm-block"></div>
 
-        <!--<li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="fa fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
+       <!-- <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
           </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>-->
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>-->
 
 
         <!-- Nav Item - User Information -->
@@ -155,6 +155,11 @@
             <a class="dropdown-item" href="../settings">
               <i class="fas fa-address-card fa-sm fa-fw mr-2 text-gray-400"></i>
               Profile
+            </a>
+
+            <a class="dropdown-item" href="../settings/notification.php">
+              <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
+              Settings
             </a>
 
             <div class="dropdown-divider"></div>
@@ -265,7 +270,7 @@
           ?>
 
 
-             <?php
+          <?php
             if($_SESSION["user_role"] == "SuperUser"){
               ?>
                  <li class="nav-item">
@@ -364,8 +369,6 @@
               }
             ?>
 
-
-
                 <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fa fa-shopping-bag"></i>
@@ -430,7 +433,7 @@
                   }
                   ?>
 
-                     <?php
+                <?php
                 if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin" ){
                   ?>
                   <li class="nav-item">
@@ -441,9 +444,9 @@
                   </li>
                   <?php
                   }
-                  ?>
+                ?>
 
-                      <?php
+                <?php
                 if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin" ){
                   ?>
                   <li class="nav-item">
@@ -454,9 +457,9 @@
                   </li>
                   <?php
                   }
-                  ?>
+                ?>
 
-                      <?php
+                <?php
                 if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin" ){
                   ?>
                       <li class="nav-item">
@@ -489,6 +492,12 @@
                     <a href="../settings/" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Account Settings</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="../settings/notification.php" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Notification Settings</p>
                     </a>
                   </li>
                    <?php
@@ -711,12 +720,13 @@ $(".nav-item a").on("click", function() {
     color: #fff;
     cursor: pointer;
     padding: 0px;
-    border-radius: 15%;
+    border-radius: 20%;
     text-align: center;
+    background-color: #000;
   }
 
   #scrollBtn:hover {
-    background-color: black;
+    opacity: 0.6;
   }
 
   .rotate {

@@ -173,7 +173,7 @@ include('../../includes/navbar.php');
                             $records = mysqli_query($connection, "SELECT * From category WHERE categoryStatus ='Active'");
                             foreach ($records as $k => $v): 
                               ?>
-                              <option value="<?php echo $v['categoryId'] ?>" <?php if(in_array($v['categoryId'], $category_data)) { echo 'selected="selected"'; } ?>><?php echo $v['categoryName'] ?></option>
+                              <option value="<?php echo $v['categoryId'] ?>" <?php if(in_array($v['categoryId'], $category_data)) { echo 'selected="selected"'; } ?> ><?php echo $v['categoryName'] ?></option>
                             <?php endforeach ?>
                         </select>
                       </div>      
@@ -189,18 +189,18 @@ include('../../includes/navbar.php');
                        <?php 
                         $attdata = json_decode($row['attvalueId']); 
                         ?>
-                      <select class="form-control multiselect" multiple="multiple" name="attvalue[]">
-                        <?php
-                         $record_attv = mysqli_query($connection, "SELECT * From attributes_value WHERE status ='Active' AND parentId='".$data_att['attributeId']."'");
-                            foreach($record_attv as $k => $v){
-                              ?>
-                               <option value="<?php echo $v['attvalueId'] ?>" <?php if(in_array($v['attvalueId'], $attdata)) { echo 'selected="selected"'; } ?>><?php echo $v['attvalueName'] ?></option>
-                              <?php  
-                            }
-                        ?>
-                      </select>
-                    </div>
-                    <?php
+                        <select class="form-control multiselect" multiple="multiple" name="attvalue[]">
+                          <?php
+                           $record_attv = mysqli_query($connection, "SELECT * From attributes_value WHERE status ='Active' AND parentId='".$data_att['attributeId']."'");
+                              foreach($record_attv as $k => $v){
+                                ?>
+                                 <option value="<?php echo $v['attvalueId'] ?>" <?php if(in_array($v['attvalueId'], $attdata)) { echo 'selected="selected"'; } ?> ><?php echo $v['attvalueName'] ?></option>
+                                <?php  
+                              }
+                          ?>
+                        </select>
+                      </div>
+                      <?php
                 }
                 ?>
 

@@ -8,8 +8,12 @@ include('../../includes/header.php');
 
 
 <style type="text/css">
+  .btn-default{
+    background-color: #f8f9fa;
+    border-color: #ddd;
+    color: #444;
+  }
   body {
-
   background-color: #e9ecef;
   min-height: 100vh; }
 
@@ -192,9 +196,10 @@ include('../../includes/header.php');
                   </div>
                 <br>
                 <p class="login-card-footer-text "><a href="../auth/forgetPassword.php"><i class="fa fa-lock"></i> Forget Password?</a></p>
-
                 </form>
-                
+                <form>
+                  <button type="submit" name="faceLogin" class="btn btn-default shadow-sm" id="">Login with Face ID &nbsp;<img src="../../dist/img/faceid.png" height="20" width="20"></button>
+                </form>
                 
               
             </div>

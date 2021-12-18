@@ -50,8 +50,6 @@ include('../../includes/navbar.php');
             </div>
           </div>
 
-
-
         </div>
         <!--Submit button-->
         <div class="modal-footer justify-content-between">

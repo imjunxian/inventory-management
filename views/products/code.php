@@ -53,12 +53,12 @@ if(isset($_POST["addBtn"])){
 	    $_SESSION['status_code'] = "error";
 	    header("Location: add.php?error=empty");
 	}
-	if($exist){
+	/*if($exist){
 		$_SESSION['statusSKU'] = "Image already exists";
 	    $_SESSION['status_code'] = "error";
 	    header("Location: add.php?imageexists");
 
-	}else if($_FILES["product_image"]["size"] > 500000){
+	}*/else if($_FILES["product_image"]["size"] > 500000){
 		$_SESSION['statusSKU'] = "Image size too large";
 	    $_SESSION['status_code'] = "error";
 	    header("Location: add.php?imgsizeerror");
@@ -86,6 +86,7 @@ if(isset($_POST["addBtn"])){
 			$query_run = mysqli_query($connection, $query);
 
 			if($query_run){
+				unlink($target_file);
 			   	move_uploaded_file($storeName, $target_file);
 				$_SESSION['status'] = "Product Added";
 			    $_SESSION['status_code'] = "success";

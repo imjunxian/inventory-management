@@ -72,9 +72,9 @@ if (isset($_POST['loginBtn'])) {
     $result = $stmt->get_result();
 
     if(!mysqli_num_rows($result) > 0){
-        $_SESSION['status'] = 'Email Not Found. Please try again.';
+        $_SESSION['status'] = 'Invalid Email or Password.';
         $_SESSION['loginEmail'] = $email;
-        header('Location: ../auth/index.php?error=emailnotfound');
+        header('Location: ../auth/index.php?error=loginfailed');
         exit();
     }
 
@@ -119,9 +119,9 @@ if (isset($_POST['loginBtn'])) {
                 exit();
             }
         } else {
-            $_SESSION['status'] = 'Invalid Password. Please try again.';
+            $_SESSION['status'] = 'Invalid Email or Password.';
             $_SESSION['loginEmail'] = $email;
-            header('Location: ../auth/index.php?error=invalidpassword');
+            header('Location: ../auth/index.php?error=loginfailed');
             exit();
         }
     }
@@ -179,9 +179,9 @@ function send_email($email_sent,$url){
     $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
     // More headers
-    $headers .= 'From: noreply <me@example.com>' . "\r\n";
+    $headers .= 'From: noreply <no-reply@gmail.com>' . "\r\n";
     $headers .= "To: <".$email_sent.">\r\n";
-    $header .= "Reply-To: me@example.com\r\n";
+    $header .= "Reply-To: no-reply@gmail.com\r\n";
 
     mail($email_sent,$subject,$message,$headers);
 }
@@ -346,79 +346,6 @@ if(isset($_POST['resetPasswordBtn'])){
     }else{
         header("Location: ../error/404.php");
     }
-
-    /*$stmte = $connection -> prepare("SELECT * FROM users WHERE userEmail = ?");
-    $stmte->bind_param('s', $email);
-    $stmte->execute();
-    $resulte = $stmte->get_result();
-
-     while ($rowe = $resulte->fetch_assoc()) {
-        $dbpass = $rowe['userPassword'];
-        if (password_verify($newpassword, $dbpass) && password_verify($cpassword, $dbpass)) {
-            $_SESSION['status'] = "New Password cannot be same as Current Password";
-            header("Location: resetPassword.php?selector={$selector}&validator={$validator}&email={$email}");
-        }else if($newpassword == ''){
-            $_SESSION['status'] = "Password cannot be empty";
-            header("Location: resetPassword.php?selector={$selector}&validator={$validator}&email={$email}");
-        }else if($cpassword == ''){
-            $_SESSION['status'] = "Please confirm your password";
-            header("Location: resetPassword.php?selector={$selector}&validator={$validator}&email={$email}");
-        }else if((!preg_match($pattern, $newpassword)) && (!preg_match($pattern, $cpassword))){
-            $_SESSION['status'] = "Password must at least 8 characters which is contained 1 number, 1 uppercase, 1 lowercase letter";
-            header("Location: resetPassword.php?selector={$selector}&validator={$validator}&email={$email}");
-        }else if($newpassword != $cpassword){
-            $_SESSION['status'] = "Password not match";
-            header("Location: resetPassword.php?selector={$selector}&validator={$validator}&email={$email}");
-        }else if($newpassword != '' && $cpassword != '' && $newpassword == $cpassword){
-
-            $stmt = $connection -> prepare("SELECT * FROM password_reset WHERE selector=?");
-            $stmt->bind_param('s', $selector);
-            $stmt->execute();
-            $result = $stmt->get_result();
-
-            while ($row = $result->fetch_assoc()) {
-                $token = $row["token"]; //token in database
-                $tokenBin = hex2bin($validator); //encrypt the token that get from browser
-                $exp = $row["expires"]; //get expires time in database
-                $email = $row["email"];
-
-                if($currentDate >= $exp){ 
-                    $query_del = $connection -> prepare("DELETE FROM password_reset WHERE email = ?");
-                    $query_del->bind_param('s', $email);
-                    $query_del->execute();
-                    header("Location: ../error/404.php");
-
-                }else if($currentDate < $exp){
-                    if(password_verify($tokenBin, $token)){
-                        $query_newpass = $connection -> prepare("UPDATE users SET userPassword=? WHERE userEmail=?");
-                        $query_newpass->bind_param('ss', $newhpassword, $email);
-                        $query_newpass->execute();
-
-                        $query_dele = $connection -> prepare("DELETE FROM password_reset WHERE email=?");
-                        $query_dele->bind_param('s', $email);
-                        $query_dele->execute();
-
-                        if($query_newpass && $query_dele){
-                            $_SESSION['successStatus'] = "Password Updated Successfully.";
-                            header("Location: index.php?passwordupdated");
-                        }else{
-                            $_SESSION['status'] = "Failed to Reset";
-                            header("Location: resetPassword.php?selector={$selector}&validator={$validator}&email={$email}");
-                        }
-
-                    }else{
-                        $_SESSION['status'] = "Something went wrong.";
-                        header("Location: resetPassword.php?selector={$selector}&validator={$validator}&email={$email}");
-                    }
-                }else{
-                    header("Location: ../error/404.php");
-                }
-            }
-        }else{
-            header("Location: ../error/404.php");
-        }
-
-    }*/
 }
 
 

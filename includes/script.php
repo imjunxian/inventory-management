@@ -62,12 +62,6 @@
 <!-- Select2 -->
 <script src="../../plugins/select2/js/select2.full.min.js"></script>
 
-
-<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.2/js/locales/LANG.js"></script>
-<script src="../../plugins/sort/sortable.js"></script>
-<script src="../../plugins/sort/piexif.js"></script>-->
-
 <!-- Bootstrap WYSIHTML5 -->
 <script src="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
 <script src="../../plugins/fileinput/fileinput.min.js"></script>
@@ -75,13 +69,13 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
-
 <!-- Ekko Lightbox -->
 <script src="../../plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
 
 <!-- Filterizr-->
 <script src="../../plugins/filterizr/jquery.filterizr.min.js"></script>
-
+<!-- Bootstrap Switch -->
+<script src="../../plugins/bootstrap-switch/js/bootstrap-switch.js"></script>
 
 <script>
   $(function () {
@@ -95,28 +89,6 @@
 </script>
 
 <script>
-
- $('.toastrDefaultSuccess').on('load',function() {
-      toastr.success('Welcome Back')
-  });
- toastr.options = {
-  "closeButton": true,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-top-right",
-  "preventDuplicates": false,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "1000",
-  "timeOut": "2000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
-
 //DataTable
 $(document).ready(function() {
       $('#dataTable tfoot th').each( function () {

@@ -4,7 +4,3 @@ ErrorDocument 505 /inv/views/error/505.php
 ErrorDocument 400 /inv/views/error/400.php
 ErrorDocument 408 /inv/views/error/408.php
 ErrorDocument 500 /inv/views/error/500.php
-
-ReWriteEngine On
-
-RewriteRule ^inv/([^/\.]+)?$ /views/dashboard/index.php [L]

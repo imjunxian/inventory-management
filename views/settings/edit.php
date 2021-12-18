@@ -158,6 +158,13 @@ include('../../includes/navbar.php');
                             </button>
                           </div>
 
+                          <div class="form-group">
+                          <label>Face ID</label><br>
+                            <button type="button" class="btn btn-default" onclick=''>
+                              Enable Face ID
+                            </button>
+                          </div>
+
                         </div>
                         <!-- /.card-body -->
 
