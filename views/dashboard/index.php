@@ -496,7 +496,7 @@ include('../../includes/navbar.php');
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Sales - <b><?php echo date("F");?></b></h5>
+                <h5 class="card-title">Sales - <b><?php echo date("F Y");?></b></h5>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">

@@ -157,10 +157,10 @@
               Profile
             </a>
 
-            <a class="dropdown-item" href="../settings/notification.php">
+            <!--<a class="dropdown-item" href="../settings/notification.php">
               <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
               Settings
-            </a>
+            </a>-->
 
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -494,12 +494,12 @@
                       <p>Account Settings</p>
                     </a>
                   </li>
-                  <li class="nav-item">
+                  <!--<li class="nav-item">
                     <a href="../settings/notification.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Notification Settings</p>
                     </a>
-                  </li>
+                  </li>-->
                    <?php
                     if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
                     ?>

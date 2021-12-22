@@ -10,9 +10,9 @@ include('../../includes/header.php');
 
 <style type="text/css">
   body {
-
   background-color: #e9ecef;
-  min-height: 100vh; }
+  max-height: 100vh; 
+}
 
 .brand-wrapper {
   margin-bottom: 19px; }
@@ -36,7 +36,8 @@ include('../../includes/header.php');
     -o-object-fit: cover;
        object-fit: cover; }
   .login-card .card-body {
-    padding: 85px 60px 60px; }
+    padding: 30px 50px 50px;
+  }
     @media (max-width: 422px) {
       .login-card .card-body {
         padding: 30px 24px; } }
@@ -178,21 +179,23 @@ include('../../includes/header.php');
                   </div>
                 </div>
 
-                 
-                  
+                <div class="row">
+                    <div class="col-12 mb-2">
+                    <div class="g-recaptcha" data-sitekey="6LdBhb0dAAAAALymVbQF8NTZ7OA9pikagw7Elmwt" id="grecaptcha" data-callback="callback"></div>
+                  </div>
+                </div>
+
                   <div class="row">
                   <!-- /.col -->
-                  <div class="col-12 mt-3 mb-3">
-                    <button type="submit" name="registerBtn" class="btn btn-primary btn-block" id="login">Register</button>
+                  <div class="col-12 mt-2">
+                    <button type="submit" name="registerBtn" class="btn btn-primary btn-block" id="registerBtn" disabled>Register</button>
                   </div>
                   <!-- /.col -->
                   </div>
                 <br>
 
                 </form>
-                
-                
-              
+     
             </div>
           </div>
         </div>
@@ -205,9 +208,9 @@ include('../../includes/header.php');
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 
-            <?php
+<?php
   }
-  ?>
+?>
 
 
 
@@ -216,10 +219,15 @@ include('../../includes/header.php');
 include('../../includes/script.php');
 //include('includes/footer.php');
 ?>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
 
 <script>
-      $(function() {
+      function callback() {
+          const submitButton = document.getElementById("registerBtn");
+          submitButton.removeAttribute("disabled");
+      }
 
+      $(function() {
         $.validator.addMethod(
           "regex",
           function(value, element, regexp) {

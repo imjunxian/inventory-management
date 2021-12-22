@@ -94,11 +94,6 @@ include ('../../database/dbconfig.php');
 
 </style>
 
-
-<!--<div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="../../dist/img/tabLogo.png" alt="AdminLTELogo" height="50" width="50" class="img-circle">
-  </div>-->
-
 <?php
 $currentDate = date("U");
 $email = $_GET["email"];

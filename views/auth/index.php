@@ -2,10 +2,7 @@
 session_start();
 $title = "Login";
 include('../../includes/header.php');
-//include('../includes/navbar.php');
-
 ?>
-
 
 <style type="text/css">
   .btn-default{
@@ -39,7 +36,8 @@ include('../../includes/header.php');
     -o-object-fit: cover;
        object-fit: cover; }
   .login-card .card-body {
-    padding: 85px 60px 60px; }
+    padding: 50px 40px 40px; 
+  }
     @media (max-width: 422px) {
       .login-card .card-body {
         padding: 30px 24px; } }
@@ -180,26 +178,32 @@ include('../../includes/header.php');
                   </div>
                 </div>
                 <!--<?php if(isset($_COOKIE["email"])) { ?> checked <?php } ?>-->
-                   <div class="icheck-primary mb-4">
-                    <input type="checkbox" id="remember" name="rememberme"  >
+                   <div class="icheck-primary mb-3">
+                    <input type="checkbox" id="remember" name="rememberme">
                     <label for="remember" style="color: #666666;">
                       Remember Me
                     </label>
                   </div>
+
+                  <div class="row">
+                    <div class="col-12 mb-2">
+                    <div class="g-recaptcha" data-sitekey="6LdBhb0dAAAAALymVbQF8NTZ7OA9pikagw7Elmwt" id="grecaptcha" data-callback="callback"></div>
+                  </div>
+                </div>
                   
                   <div class="row">
                   <!-- /.col -->
-                  <div class="col-12">
-                    <button type="submit" name="loginBtn" class="btn btn-primary btn-block" id="login">Sign In</button>
+                  <div class="col-12 mt-2">
+                    <button type="submit" name="loginBtn" class="btn btn-primary btn-block" id="loginBtn" disabled>Sign In</button>
                   </div>
                   <!-- /.col -->
                   </div>
                 <br>
                 <p class="login-card-footer-text "><a href="../auth/forgetPassword.php"><i class="fa fa-lock"></i> Forget Password?</a></p>
                 </form>
-                <form>
+                <!--<form>
                   <button type="submit" name="faceLogin" class="btn btn-default shadow-sm" id="">Login with Face ID &nbsp;<img src="../../dist/img/faceid.png" height="20" width="20"></button>
-                </form>
+                </form>-->
                 
               
             </div>
@@ -223,7 +227,14 @@ include('../../includes/script.php');
 //include('includes/footer.php');
 ?>
 
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
+
 <script>
+    function callback() {
+          const submitButton = document.getElementById("loginBtn");
+          submitButton.removeAttribute("disabled");
+      }
+
       $(function() {
 
         $.validator.addMethod(
