@@ -2,17 +2,6 @@
 <!--<body class="hold-transition sidebar-mini layout-fixed layout-footer-fixed layout-navbar-fixed">-->
 <body class="hold-transition sidebar-mini layout-fixed">
 <!--<body class="hold-transition dark-mode sidebar-mini layout-fixed sidebar-collapse">-->
-
-
-<!--<div class="preloader flex-column justify-content-center align-items-center">
-      <img class="img-circle" src="../../dist/img/785.gif" alt="Inv" height="100" width="100">
-    </div>-->
-
-<!--<div id="preloader">
-        <div class="loader"></div>
-    </div>-->
-
-
   <div class="wrapper">
 
     <!-- Navbar -->
@@ -57,34 +46,6 @@
 
         <div class="topbar-divider d-none d-sm-block"></div>
 
-       <!-- <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>-->
-
-
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
@@ -99,8 +60,7 @@
               ?>
 
             </span>
-            <!--<img class="img-profile rounded-circle" src="../../dist/img/avatar9.png" height="30px;" width="30px;" style="margin-top: -2px;">-->
-            <!--<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>-->
+
             <?php
               $query = $connection -> prepare("SELECT * FROM users where userId=?");
               $query -> bind_param("i", $_SESSION['user_id']);
@@ -180,7 +140,7 @@
       <!-- Brand Logo -->
 
       <a href="<?php echo $base."dashboard/"; ?>" class="brand-link" style="text-align:center;">
-        <img src="../../dist/img/tabLogo.png" alt="INV" class="brand-image img-circle elevation-2" style="opacity: .8;">
+        <img src="../../dist/img/tabLogo.ico" alt="INV" class="brand-image img-circle elevation-2" style="opacity: .8;">
         <span class="brand-text font-weight-bold" style="font-size:20px;margin-left: -21%;">Inventory</span>
       </a>
 

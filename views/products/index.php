@@ -221,7 +221,7 @@ include('../../includes/navbar.php');
                                   <div class="btn">
                                     <input type="hidden" name="view_id" value="<?php echo $row['productId']; ?>">
                                     <button type="submit" name="viewBtn" class="btn btn-info" data-toggle="tooltip" title="View <?php echo $row["productName"]; ?>"><i class="fa fa-eye" style="font-size:14px;"></i></button>
-                                     <?php
+                                    <?php
                                     if($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin"){
                                       ?>
                                         <input type="hidden" name="edit_id" value="<?php echo $row['productId']; ?>">
@@ -234,7 +234,8 @@ include('../../includes/navbar.php');
                                        
                                       <?php
                                     }
-                                  ?>
+                                    ?>
+                                    <!--<button type="submit" class="btn btn-secondary mt-2">Sell On Ebay</button>-->
                                   </div>
                                 </form>
                               </td>

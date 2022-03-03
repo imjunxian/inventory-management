@@ -185,7 +185,7 @@ include('../../includes/navbar.php');
                                   
                                 </div>
                               <!-- /.col -->
-                              <div class="col-6">
+                              <div class="col-lg-6 col-md-12">
                                 <p class="lead"></p>
 
                                 <div class="table-responsive">

@@ -7,7 +7,7 @@ $db_name = "fyp";
 
 $connection = mysqli_connect($server_name,$db_username,$db_password,$db_name);
 //$base = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-$base = "http://" . $_SERVER['SERVER_NAME'] . ":8080/inv/views/";
+$base = "http://" . $_SERVER['SERVER_NAME'] . ":7777/inv/views/";
 
 if(!$connection)
 {

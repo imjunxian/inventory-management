@@ -187,7 +187,7 @@ include('../../includes/navbar.php');
                                 <form action="salesperson.php" method="POST" id="salespersonForm">
                                     <div class="input-group">
                                         <select type="select" name="salesperson" class="form-control multiselect" id="salesperson">
-                                            <option value="" disbaled selected>--- Select Sales Person ---</option>
+                                            <option value="" disabled selected>--- Select Sales Person ---</option>
                                              <?php
                                                  $records = mysqli_query($connection, "SELECT * FROM users");
                                                     while($data = mysqli_fetch_array($records)){

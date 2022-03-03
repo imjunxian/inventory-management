@@ -110,7 +110,7 @@ include('../../includes/header.php');
             <div class="card-body">
               <div class="brand-wrapper">
                 <br>
-                 <p class="h2 "><img src="../../dist/img/tabLogo.png" alt="logo" class="img-circle logo" style="margin-top:-1%"> INVENTORY</p>
+                 <p class="h2 "><img src="../../dist/img/tabLogo.ico" alt="logo" class="img-circle logo" style="margin-top:-1%"> INVENTORY</p>
               </div>
               <p class="login-card-description ">Welcome Back :)</p>
 

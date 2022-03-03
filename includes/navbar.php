@@ -28,6 +28,25 @@ if ($_SESSION["user_role"] == "SuperUser" || $_SESSION["user_role"] == "Admin" |
               50% 50% no-repeat rgb(249,249,249);
 
 }
+  body.modal-open-noscroll
+  {
+      margin-right: 0!important;
+      overflow: hidden;
+  }
+  .modal-open-noscroll .navbar-fixed-top, .modal-open .navbar-fixed-bottom
+  {
+      margin-right: 0!important;
+  }
+
+  body.modal-open-noscroll
+  {
+    margin-right: 0!important;
+    overflow: hidden;
+  }
+  .modal-open-noscroll .navbar-default, .modal-open .navbar-default
+  {
+    margin-right: 0!important;
+  }
 </style>
 
 <script type="text/javascript">

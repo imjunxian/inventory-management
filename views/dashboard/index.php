@@ -768,7 +768,7 @@ while($row_p = mysqli_fetch_assoc($query_prod_run)){
   if($row_p["availability"] == "Available" ){
     echo '{ "category": "Available", "value": "'.$row_ava.'" },';
   }
-  if($row_p["availability"] == "Unavailable" ){
+  if($row_p["availability"] == "Unavailable"){
     echo '{ "category": "Unavailable", "value": "'.$row_un.'" },';
   }
 

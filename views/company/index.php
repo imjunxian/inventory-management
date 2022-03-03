@@ -294,25 +294,6 @@ include('../../includes/navbar.php');
         </div>
         <!-- /.row -->
 
-        <!--Map API-->
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title">Google Maps</h2>                            
-                    </div>
-
-                    <div class="card-body">
-                        <div id="maps" class="maps" style="height:500px;"></div>
-                    </div>
-
-                    <div class="card-footer">
-                        
-                    </div>
-            </div>
-        </div>
-
-
       </div>
       <!-- /.container-fluid -->
     </section>
@@ -330,35 +311,6 @@ include('../../includes/navbar.php');
 include('../../includes/script.php');
 include('../../includes/footer.php');
 ?>
-
-<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCd62WwUBWwl-8_6mvycgMFVHxB8WhDuaA&callback=myMap"></script>-->
-<!--<script src="https://maps.googleapis.com/maps/api/js"></script>-->
-<link rel="stylesheet" src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/css/ol.css"/>
-<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js"></script>
-
-<script type="text/javascript">
-   /*function initialize(){
-    var mapProp = {
-        center: new google.maps.LatLng(51.508742, -0.120850), zoom: 5,
-        mapTypeId: google.maps.mapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("maps"), mapProp);
-   }
-   google.maps.event.addDomListener(window, 'load', initialize);*/
-   var map = new ol.Map({
-    target: 'maps',
-    layers: [
-        new ol.layer.Tile({
-            source: new ol.source.OSM()
-        })
-    ],
-    view: new ol.View({
-        center: ol.proj.fromLonLat([37.41, 8.82]),OSM,
-        zoom: 4
-    })
-   });
-
-</script>
 
 <script>
   $(document).ready(function() {

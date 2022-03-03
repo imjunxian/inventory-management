@@ -43,13 +43,7 @@ include('../../includes/navbar.php');
 
             if (isset($_SESSION['editid'])) {
               $id = $_SESSION['editid'];
-              //$query = $connection -> prepare("SELECT * FROM customers WHERE customerId=?");
-              //$query -> bind_param('i', $id);
-              //$query->execute();
-              //$result = $stmt->get_result();
-              //$row = $result->fetch_assoc();
               $query = "SELECT customers.*, users.userName FROM customers INNER JOIN users ON customers.AddedBy = users.userId WHERE customerId='$id'";
-              //$query = "SELECT * FROM customers WHERE customerId='$id'";
               $query_run = mysqli_query($connection, $query);
 
               foreach ($query_run as $row) {
