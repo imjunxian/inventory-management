@@ -37,7 +37,7 @@ include('../../includes/header.php');
 
                           <div class="media row">
                               <div class="col-12 col-sm-12 col-xl-12">
-                                <img src="../../dist/img/tabLogo.png" alt="INV" class="brand-image img-circle mb-1 mb-sm-0" style="opacity: .8;" height="50" width="50"/>&emsp;
+                                <img src="../../dist/img/tabLogo.ico" alt="INV" class="brand-image img-circle mb-1 mb-sm-0" style="opacity: .8;" height="50" width="50"/>&emsp;
                                 <span class="brand-text font-weight-bold" style="font-size:28px;margin-top: 1%;">Inventory</span>
                               </div>
                             </div>
