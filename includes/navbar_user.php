@@ -139,7 +139,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
 
-      <a href="<?php echo $base."dashboard/"; ?>" class="brand-link" style="text-align:center;">
+      <a href="../dashboard/" class="brand-link" style="text-align:center;">
         <img src="../../dist/img/tabLogo.ico" alt="INV" class="brand-image img-circle elevation-2" style="opacity: .8;">
         <span class="brand-text font-weight-bold" style="font-size:20px;margin-left: -21%;">Inventory</span>
       </a>
