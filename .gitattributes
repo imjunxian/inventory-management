@@ -1,2 +1,5 @@
-plugins/* linguist-vendored
-plugins/* linguist-vendored=false
+*.css linguist-detectable=true
+*.php linguist-detectable=true 
+*.js linguist-detectable=false
+*.html linguist-detectable=false  
+
